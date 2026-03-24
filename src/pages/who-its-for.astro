@@ -1,0 +1,39 @@
+---
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import Layout from '../layouts/Layout.astro';
+import { audienceCards } from '../data/site';
+---
+
+<Layout
+  title="Who Con Gusto Is For"
+  description="Con Gusto serves property managers, employees, and contractors who need better operational visibility and cleaner execution."
+>
+  <PageHero
+    eyebrow="Who It Is For"
+    title="Different roles need different views, but they still need the same truth."
+    description="Con Gusto is being built for the real shape of property operations: managers, internal teams, and external partners all touching the same work from different angles."
+  />
+
+  <section class="section">
+    <div class="container audience-stack">
+      {audienceCards.map((card) => (
+        <article class="audience-detail">
+          <div class="icon-badge">
+            <Icon name={card.icon} />
+          </div>
+          <strong>{card.title}</strong>
+          <p>{card.description}</p>
+          <ul class="bullet-list">
+            {card.bullets.map((bullet) => (
+              <li>
+                <Icon name="check-circle" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+</Layout>

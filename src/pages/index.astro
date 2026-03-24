@@ -1,0 +1,213 @@
+---
+import Icon from '../components/Icon.astro';
+import Layout from '../layouts/Layout.astro';
+import {
+  audienceCards,
+  featureGroups,
+  heroHighlights,
+  roadmapItems,
+  site,
+  workflowSteps,
+} from '../data/site';
+---
+
+<Layout
+  title="Con Gusto | Field Operations Clarity For Property Teams"
+  description="Con Gusto helps property teams coordinate jobs, updates, communication, and field execution across mobile and dashboard workflows."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Property operations, without the blind spots</div>
+        <h1>Move field work out of scattered threads and into a system people can actually use.</h1>
+        <p>
+          Con Gusto is built for property managers, employees, and contractors who
+          need the same work to stay visible across the office, the field, and the
+          follow-up. It gives teams one place to coordinate jobs, capture updates,
+          and keep the next action clear.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/features">
+            <span>Explore Features</span>
+            <Icon name="arrow-right" />
+          </a>
+          <a class="button-secondary" href="/developer-preview">Open Developer Preview</a>
+        </div>
+        <ul class="hero-points">
+          {heroHighlights.map((item) => (
+            <li>
+              <span class="icon-badge mint">
+                <Icon name="check-circle" />
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="hero-aside">
+        <div class="metric-stack">
+          <div class="metric-card">
+            <strong>One operational thread</strong>
+            <span>
+              Requests, assignments, updates, replies, and photos belong in one
+              shared context instead of being reconstructed later.
+            </span>
+          </div>
+          <div class="metric-card">
+            <strong>Built for role clarity</strong>
+            <span>
+              Managers need oversight. Field teams need speed. Contractors need
+              unambiguous context. Con Gusto is shaped around those realities.
+            </span>
+          </div>
+          <div class="metric-card">
+            <strong>Designed to mature safely</strong>
+            <span>
+              Staging and production release discipline matter because operations
+              software breaks trust quickly when changes are shipped blindly.
+            </span>
+          </div>
+        </div>
+
+        <div class="metric-band">
+          <span><Icon name="phone" /> Mobile execution</span>
+          <span><Icon name="monitor" /> Dashboard visibility</span>
+          <span><Icon name="message" /> Communication flow</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Who it serves</div>
+        <h2>Shared operations, different responsibilities.</h2>
+        <p>
+          Con Gusto is not one generic dashboard pretending every role works the same
+          way. It is meant to support the people directing work, the people doing it,
+          and the external partners contributing to it.
+        </p>
+      </div>
+      <div class="card-grid">
+        {audienceCards.map((card) => (
+          <article class="audience-card">
+            <div class="icon-badge">
+              <Icon name={card.icon} />
+            </div>
+            <strong>{card.title}</strong>
+            <p>{card.description}</p>
+            <ul class="bullet-list">
+              {card.bullets.map((bullet) => (
+                <li>
+                  <Icon name="check-circle" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-column">
+      <div>
+        <div class="section-heading">
+          <div class="eyebrow">How it works</div>
+          <h2>From intake to completion, with fewer handoff failures.</h2>
+          <p>
+            The product exists to help teams move work forward without losing status,
+            context, or accountability between the first request and the last update.
+          </p>
+        </div>
+      </div>
+      <div class="workflow-steps">
+        {workflowSteps.map((step) => (
+          <article class="workflow-step">
+            <span class="icon-badge mint">
+              <Icon name={step.icon} />
+            </span>
+            <div>
+              <strong>{step.title}</strong>
+              <p>{step.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Platform shape</div>
+        <h2>Mobile execution and browser visibility, connected to the same backbone.</h2>
+        <p>
+          The platform is being built so field work and dashboard oversight are not
+          separate universes. The goal is a shared backend, safer release flow, and
+          better contract discipline across every client surface.
+        </p>
+      </div>
+
+      {featureGroups.map((group) => (
+        <section class="feature-group">
+          <div class="feature-group-header">
+            <h3>{group.heading}</h3>
+            <p>{group.summary}</p>
+          </div>
+          <div class="feature-grid">
+            {group.items.map((item) => (
+              <article class="feature-card">
+                <div class="icon-badge">
+                  <Icon name={item.icon} />
+                </div>
+                <strong>{item.title}</strong>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Coming into focus</div>
+        <h2>A durable operations product needs stronger release habits, not just more code.</h2>
+        <p>
+          Con Gusto is being shaped with staging, cleaner contracts, and safer
+          environment boundaries so future improvements can happen faster without
+          turning every release into guesswork.
+        </p>
+      </div>
+      <div class="roadmap-grid">
+        {roadmapItems.slice(0, 2).map((item) => (
+          <article class="roadmap-card">
+            <strong>{item.title}</strong>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="cta-panel">
+        <div>
+          <div class="eyebrow">Need access?</div>
+          <h2>Use the production dashboard when you are working. Use the preview when you are testing.</h2>
+          <p class="muted">
+            Production login routes to the live dashboard. The developer preview is
+            where in-progress changes should be reviewed before they move further.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" href={site.dashboardUrl} target="_blank" rel="noreferrer">Dashboard Login</a>
+          <a class="button-secondary" href="/developer-preview">Developer Preview</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

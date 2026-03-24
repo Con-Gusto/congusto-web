@@ -1,0 +1,55 @@
+---
+interface Props {
+  name:
+    | 'arrow-right'
+    | 'briefcase'
+    | 'building'
+    | 'camera'
+    | 'check-circle'
+    | 'inbox'
+    | 'layers'
+    | 'message'
+    | 'monitor'
+    | 'phone'
+    | 'route'
+    | 'shield'
+    | 'users'
+    | 'wrench';
+  className?: string;
+}
+
+const { name, className = '' } = Astro.props;
+
+const icons = {
+  'arrow-right': ['M5 12h14', 'm13-7 7 7-7 7'],
+  briefcase: ['M9 6V4h6v2', 'M3 9h18v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z', 'M3 10a31 31 0 0 0 18 0'],
+  building: ['M6 22V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16', 'M10 10h.01', 'M14 10h.01', 'M10 14h.01', 'M14 14h.01', 'M10 18h.01', 'M14 18h.01', 'M2 22h20'],
+  camera: ['M4 8h3l2-3h6l2 3h3v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z', 'M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z'],
+  'check-circle': ['M22 11.08V12a10 10 0 1 1-5.93-9.14', 'm9 11 3 3L22 6'],
+  inbox: ['M4 5h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5Z', 'm4 9 2 3h8l2-3'],
+  layers: ['m12 3 9 5-9 5-9-5 9-5Z', 'm3 12 9 5 9-5', 'm3 17 9 5 9-5'],
+  message: ['M4 5h16v10H8l-4 4V5Z'],
+  monitor: ['M4 5h16v11H4z', 'M12 16v3', 'M8 22h8'],
+  phone: ['M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z', 'M12 18h.01'],
+  route: ['M4 17a3 3 0 1 0 0-6h8a3 3 0 1 1 0-6h8', 'm18 2 2 3-2 3', 'm18 16 2 3-2 3'],
+  shield: ['M12 3 19 6v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6l7-3Z'],
+  users: ['M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2', 'M10 7a4 4 0 1 0 0-8 4 4 0 0 0 0 8', 'M23 21v-2a4 4 0 0 0-3-3.87', 'M16 3.13a4 4 0 0 1 0 7.75'],
+  wrench: ['M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-3 3-3-3 3-3Z'],
+} as const;
+---
+
+<svg
+  class={className}
+  xmlns="http://www.w3.org/2000/svg"
+  width="22"
+  height="22"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  {icons[name].map((d) => <path d={d} />)}
+</svg>

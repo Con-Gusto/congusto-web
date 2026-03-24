@@ -1,0 +1,29 @@
+---
+import { footerLinks, site } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-copy">
+        <strong>{site.name}</strong>
+        <p>
+          A field operations platform for property teams that need clearer job
+          coordination across managers, employees, and contractors.
+        </p>
+        <div class="footer-note">
+          Production dashboard:
+          <a class="inline-link" href={site.dashboardUrl} target="_blank" rel="noreferrer">
+            {site.dashboardUrl}
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Footer">
+        {footerLinks.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))}
+      </nav>
+    </div>
+  </div>
+</footer>

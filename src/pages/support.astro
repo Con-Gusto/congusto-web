@@ -1,0 +1,43 @@
+---
+import PageHero from '../components/PageHero.astro';
+import Layout from '../layouts/Layout.astro';
+import { supportChannels } from '../data/site';
+---
+
+<Layout
+  title="Con Gusto Support"
+  description="Support options, access paths, and contact details for Con Gusto."
+>
+  <PageHero
+    eyebrow="Support"
+    title="Support and access"
+    description="Use this page for support channels, privacy requests, and dashboard access links."
+  />
+
+  <section class="section">
+    <div class="container support-grid">
+      {supportChannels.map((channel) => (
+        <article class="support-card">
+          <strong>{channel.title}</strong>
+          <p>
+            <a class="inline-link" href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+              {channel.value}
+            </a>
+          </p>
+        </article>
+      ))}
+    </div>
+
+    <div class="container section">
+      <div class="support-card">
+        <strong>Developer and staging access</strong>
+        <p>
+          If you are testing in-progress work, use the developer preview path rather
+          than the live dashboard. Staging is intended for controlled review before
+          operational changes reach production.
+        </p>
+        <a class="inline-link" href="/developer-preview">Open the developer preview page</a>
+      </div>
+    </div>
+  </section>
+</Layout>

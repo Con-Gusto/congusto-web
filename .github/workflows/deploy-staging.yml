@@ -1,0 +1,59 @@
+name: Deploy Preview
+
+on:
+  push:
+    branches:
+      - staging
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-preview-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build preview site
+        run: npm run build
+
+      - name: Configure SSH
+        env:
+          BLUEHOST_SSH_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
+          BLUEHOST_SSH_KNOWN_HOSTS: ${{ secrets.BLUEHOST_SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${BLUEHOST_SSH_KEY}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          printf '%s\n' "${BLUEHOST_SSH_KNOWN_HOSTS}" > ~/.ssh/known_hosts
+
+      - name: Deploy preview build
+        env:
+          BLUEHOST_SSH_HOST: ${{ secrets.BLUEHOST_SSH_HOST }}
+          BLUEHOST_SSH_PORT: ${{ secrets.BLUEHOST_SSH_PORT }}
+          BLUEHOST_SSH_USER: ${{ secrets.BLUEHOST_SSH_USER }}
+          WEB_PREVIEW_PATH: ${{ secrets.WEB_PREVIEW_PATH }}
+        run: |
+          set -euo pipefail
+          SSH_PORT="${BLUEHOST_SSH_PORT:-22}"
+          SSH_TARGET="${BLUEHOST_SSH_USER}@${BLUEHOST_SSH_HOST}"
+          RSYNC_SSH="ssh -p ${SSH_PORT} -i ~/.ssh/id_rsa"
+
+          rsync -az --delete -e "$RSYNC_SSH" dist/ "${SSH_TARGET}:${WEB_PREVIEW_PATH}/"

@@ -1,0 +1,47 @@
+---
+import PageHero from '../components/PageHero.astro';
+import Layout from '../layouts/Layout.astro';
+import { roadmapItems, site } from '../data/site';
+---
+
+<Layout
+  title="Con Gusto Coming Soon"
+  description="See the near-term direction for Con Gusto across dashboard maturity, API alignment, scheduling, and reporting."
+>
+  <PageHero
+    eyebrow="Coming Soon"
+    title="The next step is cleaner shipping, safer staging, and stronger product parity."
+    description="Con Gusto is moving toward a more disciplined release model so mobile, dashboard, and backend improvements can be delivered with less risk and more confidence."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="roadmap-grid">
+        {roadmapItems.map((item) => (
+          <article class="roadmap-card">
+            <strong>{item.title}</strong>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+
+      <div class="cta-panel">
+        <div>
+          <div class="eyebrow">Why it matters</div>
+          <h2>Operations software earns trust through stability.</h2>
+          <p class="muted">
+            The long-term value here is not just a broader feature list. It is a
+            platform that teams can improve continuously without feeling like every
+            release is a gamble.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" href="/developer-preview">Developer Preview</a>
+          <a class="button-secondary" href={site.dashboardUrl} target="_blank" rel="noreferrer">
+            Production Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,27 @@
+name: Deploy Production
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: web-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Production cutover guard
+        run: |
+          echo 'Production marketing cutover is intentionally not wired yet.'
+          echo 'Root domain currently fronts the live Laravel app and API.'
+          echo 'Move congustoapp.com only after api.congustoapp.com and dashboard.congustoapp.com have public DNS and SSL.'
+          exit 1

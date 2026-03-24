@@ -1,0 +1,50 @@
+---
+import PageHero from '../components/PageHero.astro';
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+  title="Con Gusto Developer Preview"
+  description="Access Con Gusto staging surfaces for testing and development review."
+>
+  <PageHero
+    eyebrow="Developer Preview"
+    title="Use staging when you are testing changes. Use production when you are operating."
+    description="The preview environment exists so features can be reviewed safely before they move into the live workflow used by teams in the field and in the office."
+  />
+
+  <section class="section">
+    <div class="container support-grid">
+      <article class="support-card">
+        <strong>Staging dashboard</strong>
+        <p>
+          Browser-based review environment for in-progress work and future web dashboard
+          improvements.
+        </p>
+        <a class="inline-link" href={site.stagingDashboardUrl} target="_blank" rel="noreferrer">
+          {site.stagingDashboardUrl}
+        </a>
+      </article>
+
+      <article class="support-card">
+        <strong>Production dashboard</strong>
+        <p>
+          Live operational surface for authenticated users working against the current
+          production system.
+        </p>
+        <a class="inline-link" href={site.dashboardUrl} target="_blank" rel="noreferrer">
+          {site.dashboardUrl}
+        </a>
+      </article>
+
+      <article class="support-card">
+        <strong>What to expect</strong>
+        <p>
+          Staging may contain incomplete features, test content, and in-progress API
+          alignment. It is intended for controlled review, not for live operations.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>

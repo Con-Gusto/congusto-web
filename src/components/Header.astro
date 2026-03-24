@@ -1,0 +1,55 @@
+---
+import Icon from './Icon.astro';
+import { navigation, site, utilityLinks } from '../data/site';
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+
+const isActive = (href: string) =>
+  href === '/'
+    ? pathname === '/'
+    : pathname === href || pathname.startsWith(`${href}/`);
+---
+
+<div class="utility-bar">
+  <div class="container utility-inner">
+    <div class="utility-copy">
+      Safe staging access is part of the release process.
+    </div>
+    <div>
+      {utilityLinks.map((link) => (
+        <a class="utility-link" href={link.href}>
+          <Icon name="shield" />
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container site-header-inner">
+    <a class="brand" href="/">
+      <span class="brand-mark">CG</span>
+      <span>{site.name}</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      {navigation.map((item) => (
+        <a href={item.href} class:list={{ active: isActive(item.href) }}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <a class="button" href={site.dashboardUrl} target="_blank" rel="noreferrer">
+        <span>Login</span>
+        <Icon name="arrow-right" />
+      </a>
+    </div>
+  </div>
+</header>
