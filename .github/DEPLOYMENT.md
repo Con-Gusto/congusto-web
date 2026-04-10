@@ -30,6 +30,12 @@ This file intentionally does not include actual project IDs or other sensitive o
 - Production site should resolve to `https://congustoapp.com`
 - Staging site should resolve to `https://congusto-web-staging.vercel.app`
 
+## Staging Workflow Warning
+
+> **Suspected copy-paste error in `deploy-staging.yml`**
+>
+> The staging workflow may incorrectly use `environment=production` and the `--prod` flag. If so, pushes to the `staging` branch would deploy to the production Vercel project rather than the intended staging project. Before relying on staging deploys, verify that the workflow references `VERCEL_PROJECT_ID_STAGING` and does **not** pass `--prod` to the Vercel CLI.
+
 ## CI And Deploy Flow
 
 1. Install dependencies
