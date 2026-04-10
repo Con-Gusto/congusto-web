@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
-import { navigation, site } from '../data/site';
+import BrandMark from './BrandMark.astro';
+import { navigation } from '../data/site';
 
 interface Props {
   pathname: string;
@@ -17,11 +18,7 @@ const isActive = (href: string) =>
 <header class="site-header">
   <div class="container site-header-inner">
     <a class="brand" href="/">
-      <span class="brand-mark">CG</span>
-      <span class="brand-copy">
-        <strong>{site.name}</strong>
-        <small>{site.tagline}</small>
-      </span>
+      <BrandMark />
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -37,8 +34,8 @@ const isActive = (href: string) =>
     </nav>
 
     <div class="header-actions">
-      <a class="button button-secondary" href="/developer-preview">
-        <span>Preview</span>
+      <a class="button button-secondary" href="/coming-soon">
+        <span>Rollout</span>
       </a>
       <a class="button" href="/support">
         <span>Request walkthrough</span>

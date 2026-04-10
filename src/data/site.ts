@@ -1,8 +1,8 @@
 export const site = {
   name: 'Con Gusto',
-  tagline: 'Operational clarity for property teams.',
+  tagline: 'The shared workflow for property operations.',
   description:
-    'Con Gusto helps property managers, contractors, and employees keep requests, updates, and job status visible from intake through completion.',
+    'Con Gusto is a property operations platform that keeps requests, assignments, field updates, and closeout records visible in one shared workflow for property managers, contractors, and in-house teams.',
   siteUrl: 'https://congustoapp.com',
   previewUrl: 'https://preview.congustoapp.com',
   dashboardUrl: 'https://dashboard.congustoapp.com',
@@ -13,22 +13,72 @@ export const site = {
 } as const;
 
 export const navigation = [
-  { href: '/features', label: 'Features' },
-  { href: '/who-its-for', label: 'Who It Helps' },
+  { href: '/features', label: 'What It Does' },
+  { href: '/who-its-for', label: 'Who It Is For' },
+  { href: '/coming-soon', label: 'Rollout' },
   { href: '/support', label: 'Contact' },
 ] as const;
 
 export const heroHighlights = [
-  'Keep every request tied to a property, assignee, and current status.',
-  'Give office teams and field teams the same source of truth.',
-  'Capture photos, notes, and updates without rebuilding context later.',
+  'Track each request from first report to final completion on one shared record.',
+  'Keep office teams, field teams, and vendors aligned without status-chasing.',
+  'Attach photos, notes, property context, and ownership to the work itself.',
 ] as const;
 
-export const logoSlots = [
-  'Regional portfolio logo',
-  'Management company logo',
-  'Vendor network logo',
-  'Operations partner logo',
+export const coordinationTags = [
+  'Property managers',
+  'In-house teams',
+  'Vendor partners',
+  'Owners and stakeholders',
+] as const;
+
+export const definitionCards = [
+  {
+    icon: 'layers',
+    eyebrow: 'What it is',
+    title: 'A shared property operations workflow',
+    description:
+      'Con Gusto keeps requests, assignments, updates, and closeout details on the same operating record.',
+  },
+  {
+    icon: 'inbox',
+    eyebrow: 'What it does',
+    title: 'Turns intake into accountable work',
+    description:
+      'Every request starts with property context, priority, ownership, and a status trail that can survive handoffs.',
+  },
+  {
+    icon: 'camera',
+    eyebrow: 'Why it matters',
+    title: 'Connects the office and the field',
+    description:
+      'Managers, contractors, and in-house teams can see what happened on site without recreating the story from scattered messages.',
+  },
+  {
+    icon: 'shield',
+    eyebrow: 'Rollout',
+    title: 'Keeps the public story accurate',
+    description:
+      'The marketing site explains what is live today while preview surfaces stay clearly labeled and controlled.',
+  },
+] as const;
+
+export const rolloutStates = [
+  {
+    title: 'Public today',
+    description:
+      'congustoapp.com is the public marketing site for understanding the product and requesting a walkthrough.',
+  },
+  {
+    title: 'Preview remains guided',
+    description:
+      'Preview routes are for controlled review and testing, not for broad public use or implied general availability.',
+  },
+  {
+    title: 'The rollout is phased',
+    description:
+      'Dashboard and backend surfaces are still maturing, so public messaging stays aligned with actual availability.',
+  },
 ] as const;
 
 export const audienceCards = [
@@ -37,11 +87,11 @@ export const audienceCards = [
     title: 'Property Managers',
     summary: 'See what is moving, what is blocked, and what needs attention next.',
     description:
-      'Manage requests, priorities, vendors, and field updates without stitching the story together from scattered inboxes and texts.',
+      'Manage requests, priorities, vendors, and field updates without stitching the story together from inboxes, calls, and texts.',
     bullets: [
-      'Track work across buildings and teams',
-      'Review updates without chasing screenshots',
-      'Keep owners and residents informed with better context',
+      'Track work across buildings, units, and teams',
+      'Review progress without chasing screenshots or callbacks',
+      'Keep residents and stakeholders informed with better context',
     ],
   },
   {
@@ -49,10 +99,10 @@ export const audienceCards = [
     title: 'Contractors',
     summary: 'Arrive with clear scope, property context, and the latest status.',
     description:
-      'Reduce confusion around assignments, approvals, and completion details so outside vendors can move faster with fewer callbacks.',
+      'Reduce confusion around assignments, approvals, and completion details so outside vendors can move faster with fewer missed details.',
     bullets: [
       'See the request details that matter before arrival',
-      'Share updates and photos from the field',
+      'Share status, notes, and photos from the field',
       'Stay aligned on status, timing, and next steps',
     ],
   },
@@ -65,7 +115,7 @@ export const audienceCards = [
     bullets: [
       'Review assigned work in one place',
       'Update jobs in real time from the field',
-      'Attach notes and photos before the moment is lost',
+      'Attach notes and photos before details are lost',
     ],
   },
 ] as const;
@@ -101,7 +151,7 @@ export const featureGroups = [
   {
     heading: 'Visibility that survives handoffs',
     summary:
-      'The point is not another inbox. The point is a durable operational record that can move across people and roles.',
+      'The point is not another inbox. The point is a durable operating record that can move across people and roles.',
     items: [
       {
         icon: 'route',
@@ -178,7 +228,7 @@ export const supportChannels = [
     title: 'Request a walkthrough',
     value: site.supportEmail,
     href: `mailto:${site.supportEmail}`,
-    detail: 'Use email for demos, rollout questions, and partnership conversations.',
+    detail: 'Use email for demos, rollout questions, onboarding conversations, and partnerships.',
   },
   {
     title: 'Privacy requests',
@@ -190,14 +240,14 @@ export const supportChannels = [
     title: 'Preview environment',
     value: site.previewUrl,
     href: site.previewUrl,
-    detail: 'Preview is for internal review and controlled testing before public rollout.',
+    detail: 'Preview is for internal review and controlled testing before broader public rollout.',
   },
 ] as const;
 
 export const footerLinks = [
-  { href: '/features', label: 'Features' },
-  { href: '/who-its-for', label: 'Who It Helps' },
-  { href: '/coming-soon', label: 'What Is Next' },
+  { href: '/features', label: 'What It Does' },
+  { href: '/who-its-for', label: 'Who It Is For' },
+  { href: '/coming-soon', label: 'Rollout' },
   { href: '/developer-preview', label: 'Developer Preview' },
   { href: '/support', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },

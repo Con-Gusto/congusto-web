@@ -1,0 +1,25 @@
+---
+interface Props {
+  showTagline?: boolean;
+}
+
+const { showTagline = true } = Astro.props;
+---
+
+<span class="brand-lockup">
+  <span class="brand-emblem" aria-hidden="true">
+    <img
+      class="brand-mark-image"
+      src="/con-gusto-mark.svg"
+      alt=""
+      width="48"
+      height="48"
+      loading="eager"
+      decoding="async"
+    />
+  </span>
+  <span class="brand-copy">
+    <strong>Con Gusto</strong>
+    {showTagline ? <small>The shared workflow for property operations.</small> : null}
+  </span>
+</span>

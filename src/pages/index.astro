@@ -1,35 +1,38 @@
 ---
 import Icon from '../components/Icon.astro';
+import ProductShowcase from '../components/ProductShowcase.astro';
 import Layout from '../layouts/Layout.astro';
 import {
   audienceCards,
+  coordinationTags,
+  definitionCards,
   featureGroups,
   heroHighlights,
-  logoSlots,
+  rolloutStates,
   workflowSteps,
 } from '../data/site';
 ---
 
 <Layout
-  title="Con Gusto | Operational clarity for property teams"
-  description="Con Gusto gives property managers, contractors, and employees a clearer way to move work from request to completion without losing status, context, or accountability."
+  title="Con Gusto | The shared workflow for property operations"
+  description="Con Gusto is a property operations platform that keeps maintenance requests, assignments, field updates, and closeout records connected for property managers, contractors, and in-house teams."
 >
   <section class="hero hero-home">
     <div class="container hero-grid hero-grid-home">
       <div class="hero-copy">
-        <div class="eyebrow">Property operations, with fewer blind spots</div>
-        <h1>See the full job story before details get lost between the office and the field.</h1>
+        <div class="eyebrow">Property operations platform</div>
+        <h1>Con Gusto keeps property work visible from request to closeout.</h1>
         <p class="hero-lead">
-          Con Gusto is designed for property managers, contractors, and employees who
-          need work requests, updates, and completion details to stay visible from the
-          first message through the final walkthrough.
+          It gives property managers, contractors, and in-house teams one shared
+          workflow for intake, assignments, field updates, and final completion records
+          so the office and the field stay on the same page.
         </p>
         <div class="hero-actions">
           <a class="button" href="/support">
             <span>Request a walkthrough</span>
             <Icon name="arrow-right" />
           </a>
-          <a class="button button-secondary" href="/features">Explore the platform</a>
+          <a class="button button-secondary" href="/features">See what it does</a>
         </div>
         <ul class="hero-points">
           {heroHighlights.map((item) => (
@@ -43,52 +46,7 @@ import {
         </ul>
       </div>
 
-      <aside class="hero-product section-panel">
-        <div class="hero-product-header">
-          <span class="status-pill">Rollout in progress</span>
-          <span class="muted">Space reserved for dashboard and brand assets</span>
-        </div>
-
-        <div class="product-frame">
-          <div class="product-frame-window">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="product-frame-body">
-            <div class="product-column product-column-main">
-              <div class="product-card product-card-primary">
-                <strong>Job queue</strong>
-                <p>Urgent requests, assignments, and approvals stay attached to the same operational record.</p>
-              </div>
-              <div class="product-card-grid">
-                <div class="product-card">
-                  <strong>Property context</strong>
-                  <p>Address, notes, and unit details live with the work.</p>
-                </div>
-                <div class="product-card">
-                  <strong>Field updates</strong>
-                  <p>Photos, notes, and status changes are captured in the moment.</p>
-                </div>
-              </div>
-            </div>
-            <div class="product-column product-column-side">
-              <div class="product-card logo-placeholder-card">
-                <span class="logo-slot-token">Logo slot</span>
-                <p>Reserve space for future product mockups, partner marks, or rollout visuals.</p>
-              </div>
-              <div class="product-card">
-                <strong>Role-based views</strong>
-                <ul class="compact-list">
-                  <li>Managers</li>
-                  <li>Contractors</li>
-                  <li>Employees</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <ProductShowcase />
     </div>
   </section>
 
@@ -96,11 +54,11 @@ import {
     <div class="container">
       <div class="logo-strip section-panel">
         <div>
-          <p class="eyebrow">Brand and proof space</p>
-          <h2>Built to make room for future logos, product visuals, and customer proof.</h2>
+          <p class="eyebrow">Built for shared visibility</p>
+          <h2>Made for the roles that touch the same job at different moments.</h2>
         </div>
         <div class="logo-slot-grid">
-          {logoSlots.map((slot) => (
+          {coordinationTags.map((slot) => (
             <div class="logo-slot">{slot}</div>
           ))}
         </div>
@@ -111,12 +69,38 @@ import {
   <section class="section">
     <div class="container">
       <div class="section-heading section-heading-wide">
-        <div class="eyebrow">Who it helps</div>
+        <div class="eyebrow">What Con Gusto is</div>
+        <h2>A property operations system built to keep work understandable as it moves.</h2>
+        <p>
+          The clearest way to describe Con Gusto is simple: it keeps the request, the
+          assignment, the field update, and the completion record connected so the next
+          person does not have to guess what happened before them.
+        </p>
+      </div>
+      <div class="card-grid card-grid-definition">
+        {definitionCards.map((card) => (
+          <article class="definition-card section-panel">
+            <div class="icon-badge">
+              <Icon name={card.icon} />
+            </div>
+            <p class="card-kicker">{card.eyebrow}</p>
+            <strong>{card.title}</strong>
+            <p>{card.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-heading section-heading-wide">
+        <div class="eyebrow">Who it is for</div>
         <h2>One operations layer, shaped for the people who manage, perform, and complete the work.</h2>
         <p>
           Property operations break down when each role sees only part of the picture.
           Con Gusto is designed to keep those views aligned without forcing everyone
-          into the same workflow.
+          into the same screen or the same workflow.
         </p>
       </div>
       <div class="card-grid card-grid-roles">
@@ -142,7 +126,7 @@ import {
     </div>
   </section>
 
-  <section class="section section-alt">
+  <section class="section">
     <div class="container two-column">
       <div class="section-heading sticky-copy">
         <div class="eyebrow">How it works</div>
@@ -170,10 +154,10 @@ import {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section section-alt">
     <div class="container">
       <div class="section-heading">
-        <div class="eyebrow">Platform value</div>
+        <div class="eyebrow">What changes</div>
         <h2>Designed to reduce operational guesswork, not add another place to check.</h2>
         <p>
           Every screen should make the next action easier. That means shared timelines,
@@ -203,21 +187,41 @@ import {
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Rollout clarity</div>
+        <h2>The site is public. The broader product rollout is still staged carefully.</h2>
+        <p>
+          That distinction matters. This website should make Con Gusto easy to
+          understand without implying that every product surface is already generally available.
+        </p>
+      </div>
+      <div class="support-grid">
+        {rolloutStates.map((item) => (
+          <article class="support-card section-panel">
+            <strong>{item.title}</strong>
+            <p>{item.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section section-tight">
     <div class="container">
       <div class="cta-panel section-panel cta-panel-strong">
         <div>
-          <div class="eyebrow">What you can do today</div>
-          <h2>Use the public site to understand the rollout. Use preview only for controlled testing.</h2>
+          <div class="eyebrow">What you can do now</div>
+          <h2>Use the public site to understand Con Gusto, then start with a walkthrough.</h2>
           <p class="muted">
-            congustoapp.com is the public marketing surface for Con Gusto. The
-            broader backend and dashboard rollout are still being staged, so requests
-            for access and walkthroughs should start through the contact page.
+            The product story is ready to review now. Access to broader product surfaces
+            is still coordinated carefully, so walkthrough and rollout conversations should start through contact.
           </p>
         </div>
         <div class="cta-actions">
           <a class="button" href="/support">Talk to Con Gusto</a>
-          <a class="button button-secondary" href="/developer-preview">Developer preview</a>
+          <a class="button button-secondary" href="/coming-soon">See rollout status</a>
         </div>
       </div>
     </div>
