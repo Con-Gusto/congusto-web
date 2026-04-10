@@ -28,11 +28,11 @@ import {
           so the office and the field stay on the same page.
         </p>
         <div class="hero-actions">
-          <a class="button" href="/support">
+          <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">
             <span>Request a walkthrough</span>
             <Icon name="arrow-right" />
           </a>
-          <a class="button button-secondary" href="/features">See what it does</a>
+          <a class="button button-secondary" href="/features" data-analytics-event="cta_view_features">See what it does</a>
         </div>
         <ul class="hero-points">
           {heroHighlights.map((item) => (
@@ -220,8 +220,8 @@ import {
           </p>
         </div>
         <div class="cta-actions">
-          <a class="button" href="/support">Talk to Con Gusto</a>
-          <a class="button button-secondary" href="/coming-soon">See rollout status</a>
+          <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">Talk to Con Gusto</a>
+          <a class="button button-secondary" href="/coming-soon" data-analytics-event="cta_view_rollout">See rollout status</a>
         </div>
       </div>
     </div>
