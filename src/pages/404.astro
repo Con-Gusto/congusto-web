@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found | Con Gusto"
+  description="The page you were looking for does not exist on the Con Gusto marketing site."
+  noIndex={true}
+>
+  <section class="section">
+    <div class="container">
+      <div class="page-hero section-panel">
+        <div class="eyebrow">404</div>
+        <h1>That page is not here.</h1>
+        <p>
+          The public Con Gusto site may have moved this page or removed it while the
+          rollout is still evolving.
+        </p>
+        <div class="cta-actions">
+          <a class="button" href="/">Return home</a>
+          <a class="button button-secondary" href="/support">Contact Con Gusto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

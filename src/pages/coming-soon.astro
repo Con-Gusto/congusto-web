@@ -1,45 +1,42 @@
 ---
 import PageHero from '../components/PageHero.astro';
 import Layout from '../layouts/Layout.astro';
-import { roadmapItems, site } from '../data/site';
+import { roadmapItems } from '../data/site';
 ---
 
 <Layout
-  title="Con Gusto Coming Soon"
-  description="See the near-term direction for Con Gusto across dashboard maturity, API alignment, scheduling, and reporting."
+  title="What Is Next For Con Gusto"
+  description="See the near-term direction for Con Gusto as preview review, dashboard polish, scheduling coordination, and reporting continue to mature."
 >
   <PageHero
-    eyebrow="Coming Soon"
-    title="The next step is cleaner shipping, safer staging, and stronger product parity."
-    description="Con Gusto is moving toward a more disciplined release model so mobile, dashboard, and backend improvements can be delivered with less risk and more confidence."
+    eyebrow="What Is Next"
+    title="The public site is live. The broader product rollout is still being staged carefully."
+    description="Con Gusto is moving forward in controlled phases so messaging, preview feedback, and future product surfaces can mature without overpromising what is already public."
   />
 
   <section class="section">
     <div class="container">
       <div class="roadmap-grid">
         {roadmapItems.map((item) => (
-          <article class="roadmap-card">
+          <article class="roadmap-card section-panel">
             <strong>{item.title}</strong>
             <p>{item.description}</p>
           </article>
         ))}
       </div>
 
-      <div class="cta-panel">
+      <div class="cta-panel section-panel">
         <div>
-          <div class="eyebrow">Why it matters</div>
-          <h2>Operations software earns trust through stability.</h2>
+          <div class="eyebrow">Current expectation</div>
+          <h2>Use the public site to understand the platform. Use preview only for guided review and internal testing.</h2>
           <p class="muted">
-            The long-term value here is not just a broader feature list. It is a
-            platform that teams can improve continuously without feeling like every
-            release is a gamble.
+            The backend is not yet broadly live, so this site should stay clear about
+            what is public today versus what is still in preview or planned next.
           </p>
         </div>
         <div class="cta-actions">
-          <a class="button" href="/developer-preview">Developer Preview</a>
-          <a class="button-secondary" href={site.dashboardUrl} target="_blank" rel="noreferrer">
-            Production Login
-          </a>
+          <a class="button" href="/support">Request an update</a>
+          <a class="button button-secondary" href="/developer-preview">Open developer preview</a>
         </div>
       </div>
     </div>

@@ -7,22 +7,25 @@ import { audienceCards } from '../data/site';
 
 <Layout
   title="Who Con Gusto Is For"
-  description="Con Gusto serves property managers, employees, and contractors who need better operational visibility and cleaner execution."
+  description="Con Gusto is designed for property managers, contractors, and employees who need clearer coordination around requests, field updates, and completion details."
 >
   <PageHero
-    eyebrow="Who It Is For"
-    title="Different roles need different views, but they still need the same truth."
-    description="Con Gusto is being built for the real shape of property operations: managers, internal teams, and external partners all touching the same work from different angles."
+    eyebrow="Who It Helps"
+    title="Different roles need different workflows, but they still need the same record of the work."
+    description="Con Gusto is built around the real shape of property operations: managers, employees, and contractors all touching the same jobs from different angles and at different moments."
   />
 
   <section class="section">
     <div class="container audience-stack">
       {audienceCards.map((card) => (
-        <article class="audience-detail">
-          <div class="icon-badge">
+        <article class="audience-detail section-panel">
+          <div class="icon-badge icon-badge-soft">
             <Icon name={card.icon} />
           </div>
-          <strong>{card.title}</strong>
+          <div>
+            <strong>{card.title}</strong>
+            <p class="card-summary">{card.summary}</p>
+          </div>
           <p>{card.description}</p>
           <ul class="bullet-list">
             {card.bullets.map((bullet) => (
@@ -34,6 +37,21 @@ import { audienceCards } from '../data/site';
           </ul>
         </article>
       ))}
+
+      <div class="cta-panel section-panel">
+        <div>
+          <div class="eyebrow">Why this matters</div>
+          <h2>Property operations get slower when every role has to rebuild context from scratch.</h2>
+          <p class="muted">
+            Better visibility does not mean everyone needs the same screen. It means
+            each person gets the details they need without losing the story behind the work.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" href="/features">See platform capabilities</a>
+          <a class="button button-secondary" href="/support">Talk to Con Gusto</a>
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

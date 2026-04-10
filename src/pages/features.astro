@@ -2,23 +2,44 @@
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import Layout from '../layouts/Layout.astro';
-import { featureGroups, site } from '../data/site';
+import { featureGroups } from '../data/site';
 ---
 
 <Layout
   title="Con Gusto Features"
-  description="Explore the Con Gusto feature set across job tracking, communication, mobile execution, and dashboard visibility."
+  description="Explore the core Con Gusto capabilities for clearer request intake, field updates, role-based visibility, and safer rollout between preview and production."
 >
   <PageHero
     eyebrow="Features"
-    title="Built around operational flow, not around disconnected tools."
-    description="Con Gusto is designed to connect incoming work, team coordination, field updates, and browser-based oversight into one operational system."
+    title="Built around the handoffs that property teams deal with every day."
+    description="Con Gusto is designed to connect requests, assignments, field updates, and management oversight in one operational flow instead of spreading the story across disconnected tools."
   />
 
   <section class="section">
     <div class="container">
+      <div class="feature-hero-panel section-panel">
+        <div>
+          <div class="eyebrow">What teams actually need</div>
+          <h2>Requests should move forward with context, not just with a status label.</h2>
+          <p>
+            The platform is focused on practical visibility: who owns the work, what
+            happened at the property, what is still blocked, and what should happen next.
+          </p>
+        </div>
+        <div class="callout-stack">
+          <div class="callout-card">
+            <strong>For managers</strong>
+            <p>Better oversight across buildings, vendors, and in-house teams.</p>
+          </div>
+          <div class="callout-card">
+            <strong>For the field</strong>
+            <p>Faster updates with less duplication and fewer missing details.</p>
+          </div>
+        </div>
+      </div>
+
       {featureGroups.map((group) => (
-        <section class="feature-group">
+        <section class="feature-group section-panel">
           <div class="feature-group-header">
             <h3>{group.heading}</h3>
             <p>{group.summary}</p>
@@ -26,7 +47,7 @@ import { featureGroups, site } from '../data/site';
           <div class="feature-grid">
             {group.items.map((item) => (
               <article class="feature-card">
-                <div class="icon-badge">
+                <div class="icon-badge icon-badge-soft">
                   <Icon name={item.icon} />
                 </div>
                 <strong>{item.title}</strong>
@@ -37,21 +58,18 @@ import { featureGroups, site } from '../data/site';
         </section>
       ))}
 
-      <div class="cta-panel">
+      <div class="cta-panel section-panel">
         <div>
-          <div class="eyebrow">Where this is headed</div>
-          <h2>Features matter, but release quality matters more.</h2>
+          <div class="eyebrow">Need a closer look?</div>
+          <h2>Use the marketing site to understand the workflow, then request a guided walkthrough.</h2>
           <p class="muted">
-            The product direction is not just about adding more screens. It is about
-            making backend, mobile, and dashboard improvements easier to test and
-            safer to ship over time.
+            The public site explains the shape of the platform. Preview routes are
+            reserved for controlled review while the broader rollout is still in progress.
           </p>
         </div>
         <div class="cta-actions">
-          <a class="button" href="/coming-soon">See What Is Coming</a>
-          <a class="button-secondary" href={site.dashboardUrl} target="_blank" rel="noreferrer">
-            Dashboard Login
-          </a>
+          <a class="button" href="/support">Request a walkthrough</a>
+          <a class="button button-secondary" href="/coming-soon">See what is next</a>
         </div>
       </div>
     </div>

@@ -5,22 +5,28 @@ import { supportChannels } from '../data/site';
 ---
 
 <Layout
-  title="Con Gusto Support"
-  description="Support options, access paths, and contact details for Con Gusto."
+  title="Contact Con Gusto"
+  description="Reach Con Gusto for walkthrough requests, preview questions, privacy requests, and rollout conversations."
 >
   <PageHero
-    eyebrow="Support"
-    title="Support and access"
-    description="Use this page for support channels, privacy requests, and dashboard access links."
+    eyebrow="Contact"
+    title="Start with a walkthrough, rollout question, or support request."
+    description="Use this page for demo requests, preview coordination, privacy requests, and general questions about the Con Gusto rollout."
   />
 
   <section class="section">
     <div class="container support-grid">
       {supportChannels.map((channel) => (
-        <article class="support-card">
+        <article class="support-card section-panel">
           <strong>{channel.title}</strong>
+          <p>{channel.detail}</p>
           <p>
-            <a class="inline-link" href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined} rel="noreferrer">
+            <a
+              class="inline-link"
+              href={channel.href}
+              target={channel.href.startsWith('http') ? '_blank' : undefined}
+              rel={channel.href.startsWith('http') ? 'noreferrer' : undefined}
+            >
               {channel.value}
             </a>
           </p>
@@ -28,15 +34,20 @@ import { supportChannels } from '../data/site';
       ))}
     </div>
 
-    <div class="container section">
-      <div class="support-card">
-        <strong>Developer and staging access</strong>
-        <p>
-          If you are testing in-progress work, use the developer preview path rather
-          than the live dashboard. Staging is intended for controlled review before
-          operational changes reach production.
-        </p>
-        <a class="inline-link" href="/developer-preview">Open the developer preview page</a>
+    <div class="container section-tight">
+      <div class="cta-panel section-panel">
+        <div>
+          <div class="eyebrow">Honest rollout note</div>
+          <h2>The marketing site is live. Broader backend and product access are still being staged.</h2>
+          <p class="muted">
+            If you are evaluating Con Gusto, the best next step is a walkthrough or a
+            preview conversation rather than assuming every linked surface is already public.
+          </p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" href="mailto:support@congustoapp.com">Email support</a>
+          <a class="button button-secondary" href="/privacy">Read privacy notes</a>
+        </div>
       </div>
     </div>
   </section>

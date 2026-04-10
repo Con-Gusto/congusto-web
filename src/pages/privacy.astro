@@ -1,81 +1,60 @@
 ---
 import PageHero from '../components/PageHero.astro';
 import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site';
 ---
 
 <Layout
-  title="Con Gusto Privacy Policy"
-  description="Read the Con Gusto privacy policy for mobile and platform use."
+  title="Con Gusto Privacy"
+  description="Privacy information for the Con Gusto marketing site and preview coordination."
 >
   <PageHero
     eyebrow="Privacy"
-    title="Privacy Policy"
-    description="Last updated: March 2026"
+    title="Privacy notes for the Con Gusto public website"
+    description="Last updated: April 2026"
   />
 
   <section class="section">
-    <div class="container support-card">
+    <div class="container support-card section-panel prose-block">
       <p>
-        ConGusto LLC ("we", "our", or "us") operates the Con Gusto platform and
-        Con Gusto Mobile application (the "App"). This page explains how we collect,
-        use, and disclose personal data when you use the platform.
+        This page describes how the public Con Gusto marketing site handles information today.
+        The public site at congustoapp.com is a marketing and contact surface. The broader
+        backend and product rollout are still in progress, so this page does not claim that
+        live in-product workflows are publicly available yet.
       </p>
 
-      <strong>Information We Collect</strong>
+      <strong>What this site collects</strong>
       <ul class="bullet-list">
-        <li><span>Account information such as name, email address, and role.</span></li>
-        <li><span>Job and property data including descriptions, addresses, notes, and related workflow information.</span></li>
-        <li><span>Photos and files that you explicitly upload while using the product.</span></li>
-        <li><span>Approximate location, when permission is granted, to help navigation to job sites.</span></li>
-        <li><span>Crash and usage data to improve reliability and usability.</span></li>
-        <li><span>Push notification preferences and delivery-related information when notifications are enabled.</span></li>
+        <li><span>Information you choose to send us by email, such as demo requests or support questions.</span></li>
+        <li><span>Basic web server and hosting logs that are typically required to operate and secure a website.</span></li>
+        <li><span>Information needed to respond to privacy requests you send to us directly.</span></li>
       </ul>
 
-      <strong>How We Use Information</strong>
+      <strong>What this site does not do</strong>
       <ul class="bullet-list">
-        <li><span>To provide, maintain, and improve the product.</span></li>
-        <li><span>To deliver job-related updates and notifications.</span></li>
-        <li><span>To support account access, technical troubleshooting, and fraud prevention.</span></li>
+        <li><span>No account signup flow is publicly active on this marketing site.</span></li>
+        <li><span>No customer-facing backend workflow is represented here as broadly live.</span></li>
+        <li><span>No external marketing fonts or third-party embed widgets are loaded by default on this site.</span></li>
       </ul>
 
-      <strong>Data Sharing</strong>
+      <strong>How information is used</strong>
       <p>
-        We do not sell personal information. We may share data with service
-        providers who help operate the product, with authorized members of your
-        organization, or when required by law.
+        We use contact information you send us to respond to walkthrough requests,
+        support questions, preview coordination, and privacy inquiries. We use routine
+        hosting and security logs to keep the site available and protected.
       </p>
 
-      <strong>Data Retention</strong>
+      <strong>Preview and future product data</strong>
       <p>
-        We retain data for as long as your account remains active, unless a longer
-        retention period is required by law or legitimate business need. Deletion
-        requests can be sent to <a class="inline-link" href="mailto:privacy@congustoapp.com">privacy@congustoapp.com</a>.
-      </p>
-
-      <strong>Security</strong>
-      <p>
-        We use industry-standard protections for data in transit and at rest, and
-        access is limited to authenticated and authorized workflows.
-      </p>
-
-      <strong>Children's Privacy</strong>
-      <p>
-        The platform is not directed to children under 13, and we do not knowingly
-        collect data from children under 13.
-      </p>
-
-      <strong>Changes To This Policy</strong>
-      <p>
-        We may update this policy from time to time. Material changes will be
-        reflected by updating the date on this page and, where appropriate,
-        communicated in-product.
+        If Con Gusto opens broader preview or production product access in the future,
+        additional product-specific privacy terms may be published to reflect those workflows.
       </p>
 
       <strong>Contact</strong>
       <p>
-        ConGusto LLC<br />
-        <a class="inline-link" href="mailto:privacy@congustoapp.com">privacy@congustoapp.com</a><br />
-        <a class="inline-link" href="https://congustoapp.com">https://congustoapp.com</a>
+        <a class="inline-link" href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a><br />
+        <a class="inline-link" href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a><br />
+        <a class="inline-link" href={site.siteUrl}>{site.siteUrl}</a>
       </p>
     </div>
   </section>

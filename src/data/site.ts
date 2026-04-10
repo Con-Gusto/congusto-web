@@ -1,115 +1,71 @@
 export const site = {
   name: 'Con Gusto',
-  tagline: 'Field operations clarity for property teams.',
+  tagline: 'Operational clarity for property teams.',
   description:
-    'Con Gusto helps property managers, employees, and contractors move work from scattered messages into one mobile and web-ready operations system.',
+    'Con Gusto helps property managers, contractors, and employees keep requests, updates, and job status visible from intake through completion.',
+  siteUrl: 'https://congustoapp.com',
+  previewUrl: 'https://preview.congustoapp.com',
   dashboardUrl: 'https://dashboard.congustoapp.com',
   stagingDashboardUrl: 'https://staging-dashboard.congustoapp.com',
+  supportEmail: 'support@congustoapp.com',
+  privacyEmail: 'privacy@congustoapp.com',
+  socialImage: '/social-share.svg',
 } as const;
 
 export const navigation = [
-  { href: '/', label: 'Home' },
   { href: '/features', label: 'Features' },
-  { href: '/who-its-for', label: 'Who It Is For' },
-  { href: '/coming-soon', label: 'Coming Soon' },
-  { href: '/support', label: 'Support' },
-] as const;
-
-export const utilityLinks = [
-  { href: '/developer-preview', label: 'Developer Preview' },
+  { href: '/who-its-for', label: 'Who It Helps' },
+  { href: '/support', label: 'Contact' },
 ] as const;
 
 export const heroHighlights = [
-  'Role-aware mobile and web workflows',
-  'Job visibility from request to completion',
-  'A single place for teams, updates, photos, and replies',
+  'Keep every request tied to a property, assignee, and current status.',
+  'Give office teams and field teams the same source of truth.',
+  'Capture photos, notes, and updates without rebuilding context later.',
 ] as const;
 
-export const featureGroups = [
-  {
-    heading: 'Operations Backbone',
-    summary:
-      'Organize incoming work, route it clearly, and keep status visible to the people actually doing the job.',
-    items: [
-      {
-        icon: 'building',
-        title: 'Job lifecycle tracking',
-        description:
-          'Move requests from intake to completion with clear priority, status, assignment, and property context.',
-      },
-      {
-        icon: 'message',
-        title: 'Email and query handling',
-        description:
-          'Turn inbox chaos into actionable work instead of leaving property communication buried in threads.',
-      },
-      {
-        icon: 'route',
-        title: 'Shared operational visibility',
-        description:
-          'Give managers and field teams a common source of truth instead of fragmented updates.',
-      },
-    ],
-  },
-  {
-    heading: 'Mobile + Dashboard Coverage',
-    summary:
-      'The platform is built to support both in-field execution and browser-based oversight.',
-    items: [
-      {
-        icon: 'phone',
-        title: 'Mobile-first field capture',
-        description:
-          'Let teams review jobs, update status, and attach photos from the property instead of waiting to report back later.',
-      },
-      {
-        icon: 'monitor',
-        title: 'Role-based dashboard views',
-        description:
-          'Support PMs, employees, and contractors with interfaces that fit how they actually work.',
-      },
-      {
-        icon: 'shield',
-        title: 'Safer release flow',
-        description:
-          'Use staging and production environments so future changes can be tested before they reach live operations.',
-      },
-    ],
-  },
+export const logoSlots = [
+  'Regional portfolio logo',
+  'Management company logo',
+  'Vendor network logo',
+  'Operations partner logo',
 ] as const;
 
 export const audienceCards = [
   {
     icon: 'briefcase',
     title: 'Property Managers',
+    summary: 'See what is moving, what is blocked, and what needs attention next.',
     description:
-      'See work across buildings, understand what is blocked, and keep communication moving without living inside multiple inboxes and spreadsheets.',
+      'Manage requests, priorities, vendors, and field updates without stitching the story together from scattered inboxes and texts.',
     bullets: [
-      'Track requests, priorities, and completions',
-      'Review job context without chasing updates',
-      'Coordinate teams and vendors from one view',
+      'Track work across buildings and teams',
+      'Review updates without chasing screenshots',
+      'Keep owners and residents informed with better context',
     ],
   },
   {
     icon: 'wrench',
-    title: 'Employees',
+    title: 'Contractors',
+    summary: 'Arrive with clear scope, property context, and the latest status.',
     description:
-      'Give field teams a cleaner way to see assigned work, capture updates, and close the loop from the property instead of after the fact.',
+      'Reduce confusion around assignments, approvals, and completion details so outside vendors can move faster with fewer callbacks.',
     bullets: [
-      'Work from a mobile-friendly job list',
-      'Update progress in real time',
-      'Attach photos and notes from the field',
+      'See the request details that matter before arrival',
+      'Share updates and photos from the field',
+      'Stay aligned on status, timing, and next steps',
     ],
   },
   {
     icon: 'users',
-    title: 'Contractors',
+    title: 'Employees',
+    summary: 'Work from a clean queue instead of reacting from multiple channels.',
     description:
-      'Reduce ambiguity around assignments, expected outcomes, and the status signals that property teams need to keep work moving.',
+      'Give in-house teams a mobile-friendly workflow for assigned jobs, progress updates, and completion notes from the property.',
     bullets: [
-      'See the job context that matters',
-      'Stay aligned on status and scope',
-      'Contribute updates without process friction',
+      'Review assigned work in one place',
+      'Update jobs in real time from the field',
+      'Attach notes and photos before the moment is lost',
     ],
   },
 ] as const;
@@ -117,76 +73,132 @@ export const audienceCards = [
 export const workflowSteps = [
   {
     icon: 'inbox',
-    title: 'Capture',
+    title: 'Capture the request',
     description:
-      'Work begins with a request, inquiry, or operational need entering the system with property context attached.',
+      'A request starts with the property, issue, and priority already attached to the same record.',
   },
   {
     icon: 'layers',
-    title: 'Coordinate',
+    title: 'Assign with context',
     description:
-      'Managers prioritize, assign, and route work while keeping the team aligned on what is happening next.',
+      'Managers route work with enough detail for the next person to act without extra back-and-forth.',
   },
   {
     icon: 'camera',
-    title: 'Execute',
+    title: 'Update from the field',
     description:
-      'Employees and contractors update jobs from the field with status changes, notes, and photos.',
+      'Employees and contractors can add status, notes, and photos while the work is happening.',
   },
   {
     icon: 'check-circle',
-    title: 'Close',
+    title: 'Close with a clear record',
     description:
-      'The full team can see what was completed, what is waiting, and where follow-up is still needed.',
+      'Everyone can see what changed, what was completed, and what still needs follow-up.',
+  },
+] as const;
+
+export const featureGroups = [
+  {
+    heading: 'Visibility that survives handoffs',
+    summary:
+      'The point is not another inbox. The point is a durable operational record that can move across people and roles.',
+    items: [
+      {
+        icon: 'route',
+        title: 'Shared job timeline',
+        description:
+          'Keep requests, notes, assignments, and completion updates in one place instead of reconstructing them later.',
+      },
+      {
+        icon: 'message',
+        title: 'Cleaner communication flow',
+        description:
+          'Reduce the drift that happens when work is spread across texts, calls, and disconnected email threads.',
+      },
+      {
+        icon: 'building',
+        title: 'Property-aware work records',
+        description:
+          'Tie every job to the building, unit, and context that the next person actually needs.',
+      },
+    ],
+  },
+  {
+    heading: 'Built for office and field teams',
+    summary:
+      'Con Gusto is shaped around how property operations really happen: across dashboards, phones, and active job sites.',
+    items: [
+      {
+        icon: 'phone',
+        title: 'Field-ready updates',
+        description:
+          'Capture photos, notes, and progress updates on site rather than waiting to report back later.',
+      },
+      {
+        icon: 'monitor',
+        title: 'Role-based oversight',
+        description:
+          'Give managers, employees, and contractors views that fit the work each group needs to do.',
+      },
+      {
+        icon: 'shield',
+        title: 'Safer rollout path',
+        description:
+          'Use preview and production environments so messaging and product changes can be reviewed before they go live.',
+      },
+    ],
   },
 ] as const;
 
 export const roadmapItems = [
   {
-    title: 'Stronger web dashboard parity',
+    title: 'Expanded dashboard views',
     description:
-      'A cleaner dedicated dashboard experience for browser-based users, with safer staging and production releases.',
+      'Clearer browser-based visibility for managers and office teams as the web surface matures.',
   },
   {
-    title: 'Shared API contract discipline',
+    title: 'Stronger scheduling coordination',
     description:
-      'Better alignment between backend, mobile, and future dashboard work so new features are easier to ship safely.',
+      'Better planning, routing, and follow-up across in-house teams and outside vendors.',
   },
   {
-    title: 'Operational scheduling and planning',
+    title: 'Richer reporting',
     description:
-      'Improved planning views and coordination tools as the scheduling layer matures.',
+      'More insight into volume, response timing, bottlenecks, and property-level workload patterns.',
   },
   {
-    title: 'Richer reporting and controls',
+    title: 'Progressive product rollout',
     description:
-      'More visibility into workload, response patterns, and operational bottlenecks over time.',
+      'A tighter path from preview review to public release as backend and dashboard surfaces come online.',
   },
 ] as const;
 
 export const supportChannels = [
   {
-    title: 'General support',
-    value: 'support@congustoapp.com',
-    href: 'mailto:support@congustoapp.com',
+    title: 'Request a walkthrough',
+    value: site.supportEmail,
+    href: `mailto:${site.supportEmail}`,
+    detail: 'Use email for demos, rollout questions, and partnership conversations.',
   },
   {
     title: 'Privacy requests',
-    value: 'privacy@congustoapp.com',
-    href: 'mailto:privacy@congustoapp.com',
+    value: site.privacyEmail,
+    href: `mailto:${site.privacyEmail}`,
+    detail: 'Use this address for privacy questions or data handling requests.',
   },
   {
-    title: 'Dashboard access',
-    value: site.dashboardUrl,
-    href: site.dashboardUrl,
+    title: 'Preview environment',
+    value: site.previewUrl,
+    href: site.previewUrl,
+    detail: 'Preview is for internal review and controlled testing before public rollout.',
   },
 ] as const;
 
 export const footerLinks = [
   { href: '/features', label: 'Features' },
-  { href: '/who-its-for', label: 'Who It Is For' },
-  { href: '/coming-soon', label: 'Coming Soon' },
+  { href: '/who-its-for', label: 'Who It Helps' },
+  { href: '/coming-soon', label: 'What Is Next' },
   { href: '/developer-preview', label: 'Developer Preview' },
-  { href: '/support', label: 'Support' },
+  { href: '/support', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
 ] as const;

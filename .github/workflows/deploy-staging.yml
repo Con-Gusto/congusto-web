@@ -1,4 +1,4 @@
-name: Deploy Preview
+name: Deploy Staging
 
 on:
   push:
@@ -10,13 +10,17 @@ permissions:
   contents: read
 
 concurrency:
-  group: web-preview-deploy
+  group: vercel-staging-deploy
   cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: staging
+    env:
+      VERCEL_ORG_ID: ${{ vars.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ vars.VERCEL_PROJECT_ID_STAGING }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
 
     steps:
       - name: Checkout
@@ -31,29 +35,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build preview site
-        run: npm run build
+      - name: Check site
+        run: npm run check
 
-      - name: Configure SSH
-        env:
-          BLUEHOST_SSH_KEY: ${{ secrets.BLUEHOST_SSH_KEY }}
-          BLUEHOST_SSH_KNOWN_HOSTS: ${{ secrets.BLUEHOST_SSH_KNOWN_HOSTS }}
-        run: |
-          install -m 700 -d ~/.ssh
-          printf '%s\n' "${BLUEHOST_SSH_KEY}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          printf '%s\n' "${BLUEHOST_SSH_KNOWN_HOSTS}" > ~/.ssh/known_hosts
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
 
-      - name: Deploy preview build
-        env:
-          BLUEHOST_SSH_HOST: ${{ secrets.BLUEHOST_SSH_HOST }}
-          BLUEHOST_SSH_PORT: ${{ secrets.BLUEHOST_SSH_PORT }}
-          BLUEHOST_SSH_USER: ${{ secrets.BLUEHOST_SSH_USER }}
-          WEB_PREVIEW_PATH: ${{ secrets.WEB_PREVIEW_PATH }}
-        run: |
-          set -euo pipefail
-          SSH_PORT="${BLUEHOST_SSH_PORT:-22}"
-          SSH_TARGET="${BLUEHOST_SSH_USER}@${BLUEHOST_SSH_HOST}"
-          RSYNC_SSH="ssh -p ${SSH_PORT} -i ~/.ssh/id_rsa"
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
 
-          rsync -az --delete -e "$RSYNC_SSH" dist/ "${SSH_TARGET}:${WEB_PREVIEW_PATH}/"
+      - name: Build Vercel artifacts
+        run: vercel build --prod --token="$VERCEL_TOKEN"
+
+      - name: Deploy to staging project
+        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"

@@ -1,6 +1,6 @@
 ---
 import Icon from './Icon.astro';
-import { navigation, site, utilityLinks } from '../data/site';
+import { navigation, site } from '../data/site';
 
 interface Props {
   pathname: string;
@@ -14,40 +14,34 @@ const isActive = (href: string) =>
     : pathname === href || pathname.startsWith(`${href}/`);
 ---
 
-<div class="utility-bar">
-  <div class="container utility-inner">
-    <div class="utility-copy">
-      Safe staging access is part of the release process.
-    </div>
-    <div>
-      {utilityLinks.map((link) => (
-        <a class="utility-link" href={link.href}>
-          <Icon name="shield" />
-          <span>{link.label}</span>
-        </a>
-      ))}
-    </div>
-  </div>
-</div>
-
 <header class="site-header">
   <div class="container site-header-inner">
     <a class="brand" href="/">
       <span class="brand-mark">CG</span>
-      <span>{site.name}</span>
+      <span class="brand-copy">
+        <strong>{site.name}</strong>
+        <small>{site.tagline}</small>
+      </span>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
       {navigation.map((item) => (
-        <a href={item.href} class:list={{ active: isActive(item.href) }}>
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={{ active: isActive(item.href) }}
+        >
           {item.label}
         </a>
       ))}
     </nav>
 
     <div class="header-actions">
-      <a class="button" href={site.dashboardUrl} target="_blank" rel="noreferrer">
-        <span>Login</span>
+      <a class="button button-secondary" href="/developer-preview">
+        <span>Preview</span>
+      </a>
+      <a class="button" href="/support">
+        <span>Request walkthrough</span>
         <Icon name="arrow-right" />
       </a>
     </div>
