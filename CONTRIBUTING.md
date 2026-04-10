@@ -14,29 +14,38 @@ npm run check
 npm run build
 ```
 
+## What Contributors Should Understand First
+
+- This is a public marketing site, not the product application
+- Most copy and navigation changes should start in `src/data/site.ts`
+- Most layout, styling, and responsive behavior changes should start in `src/styles/global.css`
+- Shared shell, metadata, favicon, and social tags live in `src/layouts/Layout.astro`
+- Brand assets live in `public/`
+
 ## Branches
 
-- `main` is the Vercel production branch for `congustoapp.com`
-- `staging` deploys the separate public staging Vercel project
-- Pull requests and feature branches can still use Vercel preview deployments when needed
-- Pull requests should pass CI before merge
+- `main` deploys production
+- `staging` deploys the public staging site
+- Feature branches and pull requests can still use preview deployments when needed
+- If the intent is for production and staging to stay identical, make sure both branches receive the same commit
 
-## Content Ownership
+## Content Standards
 
-- Shared site messaging and route-level links live in `src/data/site.ts`
-- Layout shell and metadata live in `src/layouts/Layout.astro`
-- Public-facing copy should stay aligned with the current rollout state
-- Preview, backend, and future dashboard language should remain clearly marked as preview or in progress until those surfaces are live
+- Public copy must match the actual rollout state
+- Do not describe backend or dashboard functionality as broadly live unless it is publicly available
+- Keep preview routes and in-progress surfaces clearly labeled
+- Keep the homepage especially clear on what Con Gusto is, what it does, and who it is for
 
-## Before Opening a PR
+## Before Opening A PR
 
 - Run `npm run check`
 - Run `npm run build`
 - Review changed copy for rollout accuracy
-- Review metadata, route links, and contact details if you touched public pages
-- Confirm the expected deployment target is correct: `main` for production, `staging` for staging
+- Review route links, metadata, support emails, and favicon/social assets if branding changed
+- Confirm the expected deployment target: `main` for production, `staging` for staging
 
-## Public Repo Rules
+## Documentation Standards
 
-- Do not add private infrastructure details, secret values, or account recovery notes to markdown files
-- Keep handoff docs useful for contributors without exposing internal operational data
+- Update markdown files when behavior, deployment flow, or contributor workflow changes
+- Keep docs concise, accurate, and useful for a new developer entering the repo cold
+- Do not add secrets, private infrastructure details, account recovery notes, or sensitive operational data

@@ -1,39 +1,58 @@
 # Handoff
 
-## Project State
+## Repo Summary
 
-- This repo powers the public Con Gusto marketing site at `https://congustoapp.com`
-- Vercel is the deployment platform for this site
-- `main` should be treated as the production branch in Vercel
-- `staging` deploys a separate public staging project at `https://congusto-web-staging.vercel.app`
-- GitHub Actions now handle deploys into the two Vercel projects
-- The broader backend and product rollout are still in progress
+This repository powers the public Con Gusto marketing site at `https://congustoapp.com`.
 
-## What Changed In This Pass
+The codebase is intentionally small. It is meant to clearly market what Con Gusto is, what it does, who it is for, and what parts of the rollout are public today.
 
-- Consolidated stale markdown guidance into a smaller public doc set
-- Removed outdated handoff content that no longer matched the live domain setup
-- Updated public copy so the site stays honest about what is live versus still in preview
-- Refreshed the marketing layout and messaging for property managers, contractors, and employees
-- Added stronger metadata and crawlability support for the public site
+## How The Site Is Built
 
-## What Future Contributors Should Check First
+- Astro for routing and page composition
+- TypeScript for data/config and component typing
+- Static output deployed to Vercel through GitHub Actions
 
-1. Confirm public copy still matches the actual rollout state
-2. Confirm the repo is still linked to the correct Vercel project and domain
-3. Run `npm run check` and `npm run build`
-4. Review `.github/DEPLOYMENT.md` before changing deployment or preview assumptions
-5. Confirm `VERCEL_TOKEN` exists in GitHub repo secrets
+## Where Things Live
 
-## Important Guardrails
+- `src/pages/`: page routes and route-specific content
+- `src/components/`: shared UI components such as header, footer, brand mark, and product showcase
+- `src/layouts/Layout.astro`: shared HTML shell, metadata, favicon, and social image wiring
+- `src/data/site.ts`: shared copy, navigation labels, audience sections, rollout messaging, and support info
+- `src/styles/global.css`: entire visual system and responsive behavior
+- `public/`: logo asset, favicon, social share image, and other static files
 
-- Keep public docs free of private infrastructure and account-recovery details
-- Do not claim backend or dashboard availability unless those surfaces are actually public
-- Keep preview routes clearly labeled as preview-only
+## Current Product Messaging Constraints
 
-## Likely Next Improvements
+- This repo is public and should stay accurate
+- Do not overstate backend or dashboard availability
+- The public site can market the product clearly, but it must still distinguish between public marketing, preview, and future rollout
+- Preview routes should remain clearly labeled as non-public or guided access
 
-1. Reconcile any useful branch-only work back into `main`
-2. Add real product visuals and logos to the new placeholder areas
-3. Add stronger automated checks such as link validation
-4. Revisit public messaging when backend rollout status changes
+## Deployment Model
+
+- `main` deploys production
+- `staging` deploys the public staging site
+- GitHub Actions run validation and Vercel deployment
+- If staging and production are intended to match, push the same commit to both branches
+
+## What Changed Recently
+
+- The homepage was rewritten to be much clearer about the Con Gusto value proposition
+- The visual system was upgraded for a more polished desktop, tablet, and mobile presentation
+- Shared branding was updated so the header, footer, social card, and favicon all use the same logo family
+- Markdown documentation was refreshed to reflect the current repo purpose and workflow
+
+## Recommended Contributor Workflow
+
+1. Read `README.md`
+2. Read `HANDOFF.md`
+3. Review `src/data/site.ts` to understand the site copy model
+4. Run `npm install`, `npm run check`, and `npm run build`
+5. Make sure any copy changes remain aligned with actual rollout state
+
+## Useful Next Improvements
+
+1. Add a lightweight visual regression or screenshot review workflow
+2. Add link validation to CI
+3. Revisit messaging as product availability changes
+4. If a finalized brand asset package becomes available, replace any reconstructed SVG marks with source-of-truth files
