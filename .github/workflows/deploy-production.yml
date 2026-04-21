@@ -42,10 +42,9 @@ jobs:
         run: npm install --global vercel@latest
 
       - name: Pull Vercel environment
-        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
+        run: vercel pull --yes --environment=production
 
-      - name: Build Vercel artifacts
-        run: vercel build --prod --token="$VERCEL_TOKEN"
-
+      # Remote build on Vercel (same pattern as congusto-dashboard); avoid --prebuilt
+      # flaking and let the CLI read VERCEL_TOKEN from the job env.
       - name: Deploy to production
-        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+        run: vercel deploy --prod --yes

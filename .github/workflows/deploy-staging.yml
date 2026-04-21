@@ -42,10 +42,7 @@ jobs:
         run: npm install --global vercel@latest
 
       - name: Pull Vercel environment
-        run: vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
-
-      - name: Build Vercel artifacts
-        run: vercel build --prod --token="$VERCEL_TOKEN"
+        run: vercel pull --yes --environment=production
 
       - name: Deploy to staging project
-        run: vercel deploy --prebuilt --prod --token="$VERCEL_TOKEN"
+        run: vercel deploy --prod --yes
