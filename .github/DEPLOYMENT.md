@@ -18,7 +18,7 @@ This repo deploys the public Con Gusto marketing site on Vercel.
   - `VERCEL_PROJECT_ID_PRODUCTION`
   - `VERCEL_PROJECT_ID_STAGING`
 - Repo secret:
-  - `VERCEL_TOKEN`
+  - `VERCEL_TOKEN` — must be a **classic** Vercel personal access token from [vercel.com/account/tokens](https://vercel.com/account/tokens). Tokens created while the CLI is logged in via **OAuth** cannot be rotated with `vercel tokens add`; if GitHub Actions reports `VERCEL_TOKEN` is not valid, paste the same classic token used for `congusto-dashboard` (or mint a new classic token and update **both** repos).
 
 This file intentionally does not include actual project IDs or other sensitive operational details.
 
@@ -30,18 +30,11 @@ This file intentionally does not include actual project IDs or other sensitive o
 - Production site should resolve to `https://congustoapp.com`
 - Staging site should resolve to `https://congusto-web-staging.vercel.app`
 
-## Staging Workflow Warning
-
-> **Suspected copy-paste error in `deploy-staging.yml`**
->
-> The staging workflow may incorrectly use `environment=production` and the `--prod` flag. If so, pushes to the `staging` branch would deploy to the production Vercel project rather than the intended staging project. Before relying on staging deploys, verify that the workflow references `VERCEL_PROJECT_ID_STAGING` and does **not** pass `--prod` to the Vercel CLI.
-
 ## CI And Deploy Flow
 
 1. Install dependencies
 2. Run `npm run check`
-3. Run `npm run build`
-4. Deploy the built output to the branch-matched Vercel project
+3. `vercel pull` then `vercel deploy --prod --yes` (remote build on Vercel; project is selected by `VERCEL_PROJECT_ID_*` in the job env)
 
 ## Post-Deploy Checks
 
