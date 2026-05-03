@@ -19,12 +19,6 @@ export const navigation = [
   { href: '/support', label: 'Contact' },
 ] as const;
 
-export const heroHighlights = [
-  'Track each request from first report to final completion on one shared record.',
-  'Keep office teams, field teams, and vendors aligned without status-chasing.',
-  'Attach photos, notes, property context, and ownership to the work itself.',
-] as const;
-
 export const coordinationTags = [
   'Property managers',
   'In-house teams',
@@ -117,6 +111,47 @@ export const audienceCards = [
       'Update jobs in real time from the field',
       'Attach notes and photos before details are lost',
     ],
+  },
+] as const;
+
+/** Home hero photography (full-bleed). */
+export const homeHeroImage = '/officeworker-3.jpg';
+
+/** Large backdrop panels in the field ↔ office bridge (separate from hero art). */
+export const bridgeFieldBackdrop = '/worker-5.jpg';
+export const bridgeOfficeBackdrop = '/officeworker-4.jpg';
+
+/** Domino-style progression: office, automation, field, back to closeout. */
+export const liveTrackerSteps = [
+  {
+    title: 'Request logged',
+    detail: 'Intake captures property, unit, and priority on one shared record.',
+    lane: 'office' as const,
+  },
+  {
+    title: 'Routed automatically',
+    detail: 'Assignments and handoffs sync so nobody rebuilds the thread.',
+    lane: 'sync' as const,
+  },
+  {
+    title: 'Field team notified',
+    detail: 'Contractors and in-house crews see scope before they arrive.',
+    lane: 'field' as const,
+  },
+  {
+    title: 'On-site updates',
+    detail: 'Photos, notes, and status post in real time from the job site.',
+    lane: 'field' as const,
+  },
+  {
+    title: 'Office verification',
+    detail: 'Managers review proof and next steps without chasing callbacks.',
+    lane: 'office' as const,
+  },
+  {
+    title: 'Closed on the record',
+    detail: 'Completion stays visible for audits, residents, and the next job.',
+    lane: 'sync' as const,
   },
 ] as const;
 
