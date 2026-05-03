@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-56 -56 624 624" fill="none">
   <defs>
     <mask id="cg-ring-cut">
-      <rect width="512" height="512" fill="#fff"/>
+      <rect x="-56" y="-56" width="624" height="624" fill="#fff"/>
       <path d="M255 185 438 72v368L255 327Z" fill="#000"/>
     </mask>
   </defs>

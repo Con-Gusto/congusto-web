@@ -5,40 +5,47 @@ import { footerLinks, site } from '../data/site';
 
 <footer class="site-footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-copy">
-        <div class="footer-brand">
-          <BrandMark />
+    <div class="footer-surface">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="footer-brand">
+            <BrandMark />
+          </div>
+          <p class="footer-tagline">
+            Con Gusto is a property operations platform for keeping requests,
+            assignments, field updates, and closeout details connected in one workflow.
+          </p>
+          <p class="footer-note">
+            The public site is live. Broader product access is still being rolled out carefully.
+          </p>
         </div>
-        <p>
-          Con Gusto is a property operations platform for keeping requests,
-          assignments, field updates, and closeout details connected in one workflow.
-        </p>
-        <div class="footer-note">
-          The public site is live. Broader product access is still being rolled out carefully.
+
+        <nav class="footer-nav" aria-labelledby="footer-nav-label">
+          <p id="footer-nav-label" class="footer-column-label">Explore</p>
+          <ul class="footer-link-list">
+            {footerLinks.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div class="footer-contact">
+          <p class="footer-column-label">Contact</p>
+          <a class="inline-link footer-email" href={`mailto:${site.supportEmail}`} data-analytics-event="cta_contact_support">
+            {site.supportEmail}
+          </a>
+          <a
+            class="inline-link"
+            href={site.previewUrl}
+            target="_blank"
+            rel="noreferrer"
+            data-analytics-event="cta_open_preview"
+          >
+            Preview environment
+          </a>
         </div>
-      </div>
-
-      <nav class="footer-nav" aria-label="Footer">
-        {footerLinks.map((item) => (
-          <a href={item.href}>{item.label}</a>
-        ))}
-      </nav>
-
-      <div class="footer-contact">
-        <strong>Contact</strong>
-        <a class="inline-link" href={`mailto:${site.supportEmail}`} data-analytics-event="cta_contact_support">
-          {site.supportEmail}
-        </a>
-        <a
-          class="inline-link"
-          href={site.previewUrl}
-          target="_blank"
-          rel="noreferrer"
-          data-analytics-event="cta_open_preview"
-        >
-          Preview environment
-        </a>
       </div>
     </div>
   </div>
