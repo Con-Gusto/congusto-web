@@ -1,8 +1,7 @@
 ---
-import Icon from '../components/Icon.astro';
+import AudienceRoles from '../components/AudienceRoles.astro';
 import PageHero from '../components/PageHero.astro';
 import Layout from '../layouts/Layout.astro';
-import { audienceCards } from '../data/site';
 ---
 
 <Layout
@@ -15,29 +14,10 @@ import { audienceCards } from '../data/site';
     description="Con Gusto is built around the real shape of property operations: managers, employees, and contractors all touch the same jobs from different angles and at different moments."
   />
 
-  <section class="section">
-    <div class="container audience-stack">
-      {audienceCards.map((card) => (
-        <article class="audience-detail section-panel">
-          <div class="icon-badge icon-badge-soft">
-            <Icon name={card.icon} />
-          </div>
-          <div>
-            <strong>{card.title}</strong>
-            <p class="card-summary">{card.summary}</p>
-          </div>
-          <p>{card.description}</p>
-          <ul class="bullet-list">
-            {card.bullets.map((bullet) => (
-              <li>
-                <Icon name="check-circle" />
-                <span>{bullet}</span>
-              </li>
-            ))}
-          </ul>
-        </article>
-      ))}
+  <AudienceRoles />
 
+  <section class="section section-tight">
+    <div class="container">
       <div class="cta-panel section-panel">
         <div>
           <div class="eyebrow">Why this matters</div>

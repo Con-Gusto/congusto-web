@@ -1,14 +1,14 @@
 ---
 import FieldOfficeBridge from '../components/FieldOfficeBridge.astro';
+import HomeHero from '../components/HomeHero.astro';
 import Icon from '../components/Icon.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
+import WhatChanges from '../components/WhatChanges.astro';
 import Layout from '../layouts/Layout.astro';
 import {
   audienceCards,
   coordinationTags,
   definitionCards,
-  featureGroups,
-  homeHeroImage,
   rolloutStates,
   workflowSteps,
 } from '../data/site';
@@ -19,44 +19,9 @@ import {
   description="Con Gusto is a property operations platform that keeps maintenance requests, assignments, field updates, and closeout records connected for property managers, contractors, and in-house teams."
 >
   <div class="page-home">
-    <section class="hero hero-home hero-home-visual">
-      <div class="hero-home-media">
-        <img
-          class="hero-home-photo"
-          src={homeHeroImage}
-          alt="Operations team member at work in an office"
-          width={1920}
-          height={1080}
-          fetchpriority="high"
-          decoding="async"
-        />
-        <div class="hero-home-scrim" />
-      </div>
-      <div class="container hero-home-inner">
-        <div class="hero-copy hero-copy-visual">
-          <p class="eyebrow hero-eyebrow-on-photo">Property operations</p>
-          <h1>One workflow from request to closeout.</h1>
-          <p class="hero-lead hero-lead-short">
-            Shared visibility for managers, vendors, and field teams—without chasing status.
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">
-              <span>Request a walkthrough</span>
-              <Icon name="arrow-right" />
-            </a>
-            <a class="button button-secondary button-on-dark" href="/features" data-analytics-event="cta_view_features">
-              See what it does
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <HomeHero />
 
-    <section class="section section-home-showcase">
-      <div class="container">
-        <ProductShowcase />
-      </div>
-    </section>
+    <ProductShowcase />
 
     <FieldOfficeBridge />
 
@@ -164,38 +129,7 @@ import {
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">What changes</div>
-        <h2>Designed to reduce operational guesswork, not add another place to check.</h2>
-        <p>
-          Every screen should make the next action easier. That means shared timelines,
-          clearer assignments, and field-ready updates that stay attached to the work.
-        </p>
-      </div>
-
-      {featureGroups.map((group) => (
-        <section class="feature-group section-panel">
-          <div class="feature-group-header">
-            <h3>{group.heading}</h3>
-            <p>{group.summary}</p>
-          </div>
-          <div class="feature-grid">
-            {group.items.map((item) => (
-              <article class="feature-card">
-                <div class="icon-badge icon-badge-soft">
-                  <Icon name={item.icon} />
-                </div>
-                <strong>{item.title}</strong>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  </section>
+  <WhatChanges />
 
   <section class="section">
     <div class="container">

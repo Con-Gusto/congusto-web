@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+import { homeHeroImage } from '../data/site';
+---
+
+<section class="hero hero-home hero-home-visual" aria-labelledby="home-hero-heading">
+  <div class="hero-home-media">
+    <img
+      class="hero-home-photo"
+      src={homeHeroImage}
+      alt="Property operations team collaborating at a shared desk in a modern office"
+      width={1920}
+      height={1080}
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div class="hero-home-scrim" aria-hidden="true" />
+  </div>
+
+  <div class="hero-home-inner">
+    <div class="hero-home-frame">
+      <div class="hero-copy hero-copy-visual">
+        <p class="eyebrow hero-eyebrow-on-photo">Property operations</p>
+        <h1 id="home-hero-heading">One workflow from request to closeout.</h1>
+        <p class="hero-lead hero-lead-short">
+          Shared visibility for managers, vendors, and field teams—without chasing status.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">
+            <span>Request a walkthrough</span>
+            <Icon name="arrow-right" />
+          </a>
+          <a
+            class="button button-secondary button-on-dark"
+            href="/features"
+            data-analytics-event="cta_view_features"
+          >
+            See what it does
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

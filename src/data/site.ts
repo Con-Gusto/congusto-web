@@ -12,6 +12,53 @@ export const site = {
   socialImage: '/social-share.svg',
 } as const;
 
+/** Full-bleed home hero photograph (office collaboration). */
+export const homeHeroImage = '/officeworker-3.jpg';
+
+/** Decorative arrow used in the shared job record stat row (Webfolio asset). */
+export const showcaseStatArrow = '/assets/imgs/arw0.png';
+
+/** Blur wash behind the shared job record section (Webfolio asset). */
+export const showcaseBlurPattern = '/assets/patterns/blur1.png';
+
+export const showcaseWorkflowItems = [
+  {
+    label: 'Open request',
+    badge: 'Urgent plumbing',
+    title: '221 Harbor Lane, Unit 3B',
+    description:
+      'Leak reported, contractor assigned, tenant update pending, completion photos attached.',
+    image: '/officeworker-2.jpg',
+    chips: ['Property context', 'Current owner', 'Next step visible'],
+  },
+  {
+    label: 'Office view',
+    title: 'Assignment and approvals',
+    description:
+      'Managers see priority, assignee, vendor status, and blockers without rebuilding the thread.',
+    image: '/officeworker-4.jpg',
+  },
+  {
+    label: 'Field update',
+    title: 'Notes and photos on site',
+    description:
+      'Crews add status, progress notes, and closeout details while the work is happening.',
+    image: '/worker-5.jpg',
+  },
+] as const;
+
+export const showcaseActivity = [
+  { time: '08:42', detail: 'Request received with unit details and priority.' },
+  { time: '09:15', detail: 'Contractor assigned with property context and scope.' },
+  { time: '11:05', detail: 'Field photos uploaded and completion notes posted.' },
+] as const;
+
+export const showcaseRoleStats = [
+  { label: 'Managers', value: 'See status and blockers clearly' },
+  { label: 'Contractors', value: 'Arrive with better context' },
+  { label: 'In-house teams', value: 'Update work in the field' },
+] as const;
+
 export const navigation = [
   { href: '/features', label: 'What It Does' },
   { href: '/who-its-for', label: 'Who It Is For' },
@@ -82,6 +129,7 @@ export const audienceCards = [
     summary: 'See what is moving, what is blocked, and what needs attention next.',
     description:
       'Manage requests, priorities, vendors, and field updates without stitching the story together from inboxes, calls, and texts.',
+    image: '/officeworker-4.jpg',
     bullets: [
       'Track work across buildings, units, and teams',
       'Review progress without chasing screenshots or callbacks',
@@ -94,6 +142,7 @@ export const audienceCards = [
     summary: 'Arrive with clear scope, property context, and the latest status.',
     description:
       'Reduce confusion around assignments, approvals, and completion details so outside vendors can move faster with fewer missed details.',
+    image: '/worker-5.jpg',
     bullets: [
       'See the request details that matter before arrival',
       'Share status, notes, and photos from the field',
@@ -106,6 +155,7 @@ export const audienceCards = [
     summary: 'Work from a clean queue instead of reacting from multiple channels.',
     description:
       'Give in-house teams a mobile-friendly workflow for assigned jobs, progress updates, and completion notes from the property.',
+    image: '/worker-3.jpg',
     bullets: [
       'Review assigned work in one place',
       'Update jobs in real time from the field',
@@ -113,9 +163,6 @@ export const audienceCards = [
     ],
   },
 ] as const;
-
-/** Home hero photography (full-bleed). */
-export const homeHeroImage = '/officeworker-3.jpg';
 
 /** Large backdrop panels in the field ↔ office bridge (separate from hero art). */
 export const bridgeFieldBackdrop = '/worker-5.jpg';
@@ -179,6 +226,59 @@ export const workflowSteps = [
     title: 'Close with a clear record',
     description:
       'Everyone can see what changed, what was completed, and what still needs follow-up.',
+  },
+] as const;
+
+export const whatChangesSection = {
+  eyebrow: 'What changes',
+  title: 'Designed to reduce operational guesswork, not add another place to check.',
+  lead:
+    'Every screen should make the next action easier. That means shared timelines, clearer assignments, and field-ready updates that stay attached to the work.',
+} as const;
+
+/** Horizontal strip panels for the home “What changes” section (p-creative layout). */
+export const whatChangesPanels = [
+  {
+    tag: 'Visibility',
+    title: 'Shared job timeline',
+    description:
+      'Keep requests, notes, assignments, and completion updates in one place instead of reconstructing them later.',
+    image: '/officeworker-2.jpg',
+  },
+  {
+    tag: 'Visibility',
+    title: 'Cleaner communication flow',
+    description:
+      'Reduce the drift that happens when work is spread across texts, calls, and disconnected email threads.',
+    image: '/officeworker-4.jpg',
+  },
+  {
+    tag: 'Visibility',
+    title: 'Property-aware work records',
+    description:
+      'Tie every job to the building, unit, and context that the next person actually needs.',
+    image: '/worker-5.jpg',
+  },
+  {
+    tag: 'Office & field',
+    title: 'Field-ready updates',
+    description:
+      'Capture photos, notes, and progress updates on site rather than waiting to report back later.',
+    image: '/worker-3.jpg',
+  },
+  {
+    tag: 'Office & field',
+    title: 'Role-based oversight',
+    description:
+      'Give managers, employees, and contractors views that fit the work each group needs to do.',
+    image: '/officeworker-1.jpg',
+  },
+  {
+    tag: 'Office & field',
+    title: 'Safer rollout path',
+    description:
+      'Use preview and production environments so messaging and product changes can be reviewed before they go live.',
+    image: '/worker-7.jpg',
   },
 ] as const;
 
@@ -257,6 +357,19 @@ export const roadmapItems = [
       'A tighter path from preview review to public release as backend and dashboard surfaces come online.',
   },
 ] as const;
+
+export const rolloutPage = {
+  eyebrow: 'Rollout',
+  title: 'The public site is live. The broader product rollout is still being staged carefully.',
+  lead:
+    'Con Gusto is moving forward in controlled phases so messaging, preview feedback, and future product surfaces can mature without overpromising what is already public.',
+  statusHeading: 'What is public today',
+  roadmapHeading: 'What is coming next',
+  footEyebrow: 'Current expectation',
+  footTitle: 'Use the public site to understand the platform. Use preview only for guided review and internal testing.',
+  footLead:
+    'The backend is not yet broadly live, so this site should stay clear about what is public today versus what is still in preview or planned next.',
+} as const;
 
 export const supportChannels = [
   {

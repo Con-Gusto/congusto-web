@@ -63,11 +63,11 @@ const structuredData = {
     <title>{pageTitle}</title>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
-  <body>
+  <body class:list={{ 'page-body-home': pathname === '/' }}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="shell">
       <Header pathname={pathname} />
-      <main id="main-content" class="main-content">
+      <main id="main-content" class:list={['main-content', { 'main-content--home': pathname === '/' }]}>
         <slot />
       </main>
       <Footer />

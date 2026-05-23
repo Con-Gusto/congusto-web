@@ -1,72 +1,98 @@
-<aside class="showcase-shell section-panel" aria-label="Con Gusto workflow preview">
-  <div class="showcase-header">
-    <div>
-      <div class="eyebrow">Shared job record</div>
-      <h2>One request. One timeline. Every step visible.</h2>
-    </div>
-    <span class="status-pill">Rollout in progress</span>
+---
+import {
+  showcaseActivity,
+  showcaseBlurPattern,
+  showcaseRoleStats,
+  showcaseStatArrow,
+  showcaseWorkflowItems,
+} from '../data/site';
+---
+
+<section class="section section-home-showcase" aria-labelledby="home-showcase-heading">
+  <div class="showcase-blur" aria-hidden="true">
+    <img src={showcaseBlurPattern} alt="" width={960} height={960} loading="lazy" decoding="async" />
   </div>
 
-  <div class="showcase-grid">
-    <article class="showcase-card showcase-card-primary">
-      <div class="showcase-card-meta">
-        <span class="showcase-label">Open request</span>
-        <span class="showcase-badge">Urgent plumbing</span>
-      </div>
-      <strong>221 Harbor Lane, Unit 3B</strong>
-      <p>Leak reported, contractor assigned, tenant update pending, completion photos attached.</p>
-      <div class="showcase-chip-row">
-        <span class="showcase-chip">Property context</span>
-        <span class="showcase-chip">Current owner</span>
-        <span class="showcase-chip">Next step visible</span>
-      </div>
-    </article>
+  <div class="container showcase-feat">
+    <div class="showcase-feat-grid">
+      <header class="showcase-feat-copy">
+        <div class="eyebrow">Shared job record</div>
+        <h2 id="home-showcase-heading">One request. One timeline. Every step visible.</h2>
+        <p>
+          A single operating record keeps intake, assignments, field updates, and closeout
+          attached—so the next person never has to rebuild the story.
+        </p>
+        <span class="status-pill">Rollout in progress</span>
+      </header>
 
-    <div class="showcase-stack">
-      <article class="showcase-card">
-        <span class="showcase-label">Office view</span>
-        <strong>Assignment and approvals</strong>
-        <p>Managers can see priority, assignee, vendor status, and any blockers without reassembling the story.</p>
+      <div class="showcase-feat-items">
+        {showcaseWorkflowItems.map((item, index) => (
+          <article class="showcase-feat-item section-panel">
+            <div
+              class="showcase-feat-media"
+              style={`background-image: url('${item.image}')`}
+              role="img"
+              aria-label={item.title}
+            />
+            <div class="showcase-feat-info">
+              <div class="showcase-feat-meta">
+                <span class="showcase-label">{item.label}</span>
+                {'badge' in item && item.badge ? (
+                  <span class="showcase-badge">{item.badge}</span>
+                ) : null}
+                {index === 0 ? (
+                  <span class="showcase-live" aria-hidden="true">
+                    <span class="showcase-live-dot" />
+                    Live
+                  </span>
+                ) : null}
+              </div>
+              <strong>{item.title}</strong>
+              <p>{item.description}</p>
+              {'chips' in item && item.chips ? (
+                <div class="showcase-chip-row">
+                  {item.chips.map((chip) => (
+                    <span class="showcase-chip">{chip}</span>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="showcase-feat-bottom">
+      <article class="showcase-timeline section-panel" aria-label="Latest activity example">
+        <div class="showcase-feed-head">
+          <span class="showcase-label">Latest activity</span>
+          <span class="showcase-feed-count">3 updates today</span>
+        </div>
+        <ul class="showcase-feed">
+          {showcaseActivity.map((entry) => (
+            <li>
+              <strong>{entry.time}</strong>
+              <span>{entry.detail}</span>
+            </li>
+          ))}
+        </ul>
       </article>
 
-      <article class="showcase-card">
-        <span class="showcase-label">Field update</span>
-        <strong>Notes and photos captured on site</strong>
-        <p>Employees and contractors can add status, progress notes, and closeout details while the work is happening.</p>
-      </article>
-    </div>
-
-    <article class="showcase-card showcase-card-feed">
-      <span class="showcase-label">Latest activity</span>
-      <ul class="showcase-feed">
-        <li>
-          <strong>08:42</strong>
-          <span>Request received with unit details and priority.</span>
-        </li>
-        <li>
-          <strong>09:15</strong>
-          <span>Contractor assigned with property context and scope.</span>
-        </li>
-        <li>
-          <strong>11:05</strong>
-          <span>Field photos uploaded and completion notes posted.</span>
-        </li>
-      </ul>
-    </article>
-  </div>
-
-  <div class="showcase-footer">
-    <div>
-      <span class="showcase-stat-label">Managers</span>
-      <strong>See status and blockers clearly</strong>
-    </div>
-    <div>
-      <span class="showcase-stat-label">Contractors</span>
-      <strong>Arrive with better context</strong>
-    </div>
-    <div>
-      <span class="showcase-stat-label">In-house teams</span>
-      <strong>Update work in the field</strong>
+      <div class="showcase-stats section-panel" aria-label="Who benefits">
+        <ul class="showcase-stats-list">
+          {showcaseRoleStats.map((stat) => (
+            <li class="showcase-stat">
+              <div class="showcase-stat-copy">
+                <span class="showcase-stat-label">{stat.label}</span>
+                <strong>{stat.value}</strong>
+              </div>
+              <div class="showcase-stat-arrow" aria-hidden="true">
+                <img src={showcaseStatArrow} alt="" width={40} height={40} loading="lazy" decoding="async" />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
-</aside>
+</section>

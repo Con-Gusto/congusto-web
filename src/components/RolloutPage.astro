@@ -1,0 +1,58 @@
+---
+import {
+  roadmapItems,
+  rolloutPage,
+  rolloutStates,
+} from '../data/site';
+---
+
+<section class="rollout-page section" aria-labelledby="rollout-page-heading">
+  <div class="container rollout-shell">
+    <header class="rollout-head">
+      <div class="eyebrow">{rolloutPage.eyebrow}</div>
+      <h1 id="rollout-page-heading">{rolloutPage.title}</h1>
+      <p>{rolloutPage.lead}</p>
+    </header>
+
+    <div class="rollout-body">
+      <section class="rollout-block" aria-labelledby="rollout-status-heading">
+        <h2 id="rollout-status-heading">{rolloutPage.statusHeading}</h2>
+        <ul class="rollout-list">
+          {rolloutStates.map((item) => (
+            <li class="rollout-row">
+              <strong>{item.title}</strong>
+              <p>{item.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="rollout-block" aria-labelledby="rollout-roadmap-heading">
+        <h2 id="rollout-roadmap-heading">{rolloutPage.roadmapHeading}</h2>
+        <ol class="rollout-list rollout-list--numbered">
+          {roadmapItems.map((item, index) => (
+            <li class="rollout-row">
+              <span class="rollout-index" aria-hidden="true">0{index + 1}</span>
+              <div class="rollout-row-copy">
+                <strong>{item.title}</strong>
+                <p>{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </div>
+
+    <footer class="rollout-foot">
+      <div class="rollout-foot-copy">
+        <div class="eyebrow">{rolloutPage.footEyebrow}</div>
+        <h2>{rolloutPage.footTitle}</h2>
+        <p>{rolloutPage.footLead}</p>
+      </div>
+      <div class="cta-actions rollout-foot-actions">
+        <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">Request an update</a>
+        <a class="button button-secondary" href="/developer-preview" data-analytics-event="cta_open_preview">Open developer preview</a>
+      </div>
+    </footer>
+  </div>
+</section>

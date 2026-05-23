@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { pathname } = Astro.props;
+const isHome = pathname === '/';
 
 const isActive = (href: string) =>
   href === '/'
@@ -17,54 +18,60 @@ const isActive = (href: string) =>
 const navId = 'site-primary-nav';
 ---
 
-<header class="site-header" data-site-header>
-  <div class="container site-header-inner">
-    <a class="brand" href="/">
-      <BrandMark />
-    </a>
+<header
+  class:list={['site-header', 'site-header--webfolio', { 'site-header--overlay': isHome }]}
+  data-site-header
+  data-header-overlay={isHome ? 'true' : 'false'}
+>
+  <nav class="site-header-bar" aria-label="Primary">
+    <div class="container site-header-inner">
+      <a class="brand" href="/">
+        <BrandMark showTagline />
+      </a>
 
-    <button
-      type="button"
-      class="nav-menu-toggle"
-      aria-expanded="false"
-      aria-controls={navId}
-      data-nav-toggle
-    >
-      <span class="ms nav-menu-toggle__icon nav-menu-toggle__icon--menu" aria-hidden="true">menu</span>
-      <span class="ms nav-menu-toggle__icon nav-menu-toggle__icon--close" aria-hidden="true">close</span>
-      <span class="visually-hidden">Menu</span>
-    </button>
+      <button
+        type="button"
+        class="nav-menu-toggle"
+        aria-expanded="false"
+        aria-controls={navId}
+        data-nav-toggle
+      >
+        <span class="ms nav-menu-toggle__icon nav-menu-toggle__icon--menu" aria-hidden="true">menu</span>
+        <span class="ms nav-menu-toggle__icon nav-menu-toggle__icon--close" aria-hidden="true">close</span>
+        <span class="visually-hidden">Menu</span>
+      </button>
 
-    <div class="nav-drawer" id={navId} data-nav-drawer>
-      <div class="nav-drawer__head">
-        <span class="nav-drawer__title">Menu</span>
-        <button type="button" class="nav-drawer__close" aria-label="Close menu" data-nav-close>
-          <span class="ms" aria-hidden="true">close</span>
-        </button>
-      </div>
-      <nav class="nav-links" aria-label="Primary">
-        {navigation.map((item) => (
-          <a
-            href={item.href}
-            aria-current={isActive(item.href) ? 'page' : undefined}
-            class:list={{ active: isActive(item.href) }}
-            data-nav-link
-          >
-            {item.label}
+      <div class="nav-drawer" id={navId} data-nav-drawer>
+        <div class="nav-drawer__head">
+          <span class="nav-drawer__title">Menu</span>
+          <button type="button" class="nav-drawer__close" aria-label="Close menu" data-nav-close>
+            <span class="ms" aria-hidden="true">close</span>
+          </button>
+        </div>
+        <div class="nav-links">
+          {navigation.map((item) => (
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={{ active: isActive(item.href) }}
+              data-nav-link
+            >
+              <span class="nav-link-label">{item.label}</span>
+            </a>
+          ))}
+        </div>
+        <div class="header-actions">
+          <a class="button button-secondary" href="/coming-soon" data-analytics-event="cta_view_rollout">
+            <span>Rollout</span>
           </a>
-        ))}
-      </nav>
-      <div class="header-actions">
-        <a class="button button-secondary" href="/coming-soon" data-analytics-event="cta_view_rollout">
-          <span>Rollout</span>
-        </a>
-        <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">
-          <span>Request walkthrough</span>
-          <Icon name="arrow-right" />
-        </a>
+          <a class="button header-cta" href="/support" data-analytics-event="cta_request_walkthrough">
+            <span class="nav-link-label">Request walkthrough</span>
+            <Icon name="arrow-right" />
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  </nav>
   <div class="nav-backdrop" data-nav-backdrop hidden aria-hidden="true"></div>
 </header>
 
@@ -78,6 +85,7 @@ const navId = 'site-primary-nav';
     var backdrop = header.querySelector('[data-nav-backdrop]');
     var closeBtn = header.querySelector('[data-nav-close]');
     var links = header.querySelectorAll('[data-nav-link]');
+    var overlay = header.getAttribute('data-header-overlay') === 'true';
 
     function isMobile() {
       return window.matchMedia('(max-width: 880px)').matches;
@@ -129,6 +137,12 @@ const navId = 'site-primary-nav';
       setOpen(false);
     }
 
+    function handleScroll() {
+      if (!overlay) return;
+      if (window.scrollY > 300) header.classList.add('nav-scroll');
+      else header.classList.remove('nav-scroll');
+    }
+
     if (toggle) {
       toggle.addEventListener('click', function () {
         if (!isMobile()) return;
@@ -155,6 +169,8 @@ const navId = 'site-primary-nav';
       syncInert();
     });
 
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     syncInert();
   })();
 </script>

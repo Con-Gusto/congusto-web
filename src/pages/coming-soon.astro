@@ -1,44 +1,11 @@
 ---
-import PageHero from '../components/PageHero.astro';
 import Layout from '../layouts/Layout.astro';
-import { roadmapItems } from '../data/site';
+import RolloutPage from '../components/RolloutPage.astro';
 ---
 
 <Layout
   title="What Is Next For Con Gusto"
   description="See the near-term direction for Con Gusto as preview review, dashboard polish, scheduling coordination, and reporting continue to mature."
 >
-  <PageHero
-    eyebrow="Rollout"
-    title="The public site is live. The broader product rollout is still being staged carefully."
-    description="Con Gusto is moving forward in controlled phases so messaging, preview feedback, and future product surfaces can mature without overpromising what is already public."
-  />
-
-  <section class="section">
-    <div class="container">
-      <div class="roadmap-grid">
-        {roadmapItems.map((item) => (
-          <article class="roadmap-card section-panel">
-            <strong>{item.title}</strong>
-            <p>{item.description}</p>
-          </article>
-        ))}
-      </div>
-
-      <div class="cta-panel section-panel">
-        <div>
-          <div class="eyebrow">Current expectation</div>
-          <h2>Use the public site to understand the platform. Use preview only for guided review and internal testing.</h2>
-          <p class="muted">
-            The backend is not yet broadly live, so this site should stay clear about
-            what is public today versus what is still in preview or planned next.
-          </p>
-        </div>
-        <div class="cta-actions">
-          <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">Request an update</a>
-          <a class="button button-secondary" href="/developer-preview" data-analytics-event="cta_open_preview">Open developer preview</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <RolloutPage />
 </Layout>

@@ -1,52 +1,68 @@
 ---
 import BrandMark from './BrandMark.astro';
 import { footerLinks, site } from '../data/site';
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-surface">
-      <div class="footer-grid">
-        <div class="footer-about">
-          <div class="footer-brand">
-            <BrandMark />
-          </div>
-          <p class="footer-tagline">
-            Con Gusto is a property operations platform for keeping requests,
-            assignments, field updates, and closeout details connected in one workflow.
-          </p>
-          <p class="footer-note">
-            The public site is live. Broader product access is still being rolled out carefully.
-          </p>
+<footer class="site-footer clean-footer crev">
+  <div class="container footer-surface ontop">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <div class="footer-brand">
+          <BrandMark showTagline={false} />
         </div>
+        <p class="footer-tagline">
+          Con Gusto is a property operations platform for keeping requests,
+          assignments, field updates, and closeout details connected in one workflow.
+        </p>
+        <p class="footer-note">
+          The public site is live. Broader product access is still being rolled out carefully.
+        </p>
+      </div>
 
-        <nav class="footer-nav" aria-labelledby="footer-nav-label">
-          <p id="footer-nav-label" class="footer-column-label">Explore</p>
-          <ul class="footer-link-list">
-            {footerLinks.map((item) => (
-              <li>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+      <nav class="footer-nav" aria-labelledby="footer-nav-label">
+        <h6 id="footer-nav-label" class="footer-column-label sub-title">Useful Links</h6>
+        <ul class="footer-link-list">
+          {footerLinks.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
-        <div class="footer-contact">
-          <p class="footer-column-label">Contact</p>
-          <a class="inline-link footer-email" href={`mailto:${site.supportEmail}`} data-analytics-event="cta_contact_support">
-            {site.supportEmail}
-          </a>
-          <a
-            class="inline-link"
-            href={site.previewUrl}
-            target="_blank"
-            rel="noreferrer"
-            data-analytics-event="cta_open_preview"
-          >
-            Preview environment
-          </a>
-        </div>
+      <div class="footer-contact">
+        <h6 class="footer-column-label sub-title">Contact</h6>
+        <p class="footer-contact-line">
+          Questions about rollout, walkthroughs, or partnerships start here.
+        </p>
+        <a
+          class="inline-link footer-email"
+          href={`mailto:${site.supportEmail}`}
+          data-analytics-event="cta_contact_support"
+        >
+          {site.supportEmail}
+        </a>
+        <a
+          class="inline-link"
+          href={site.previewUrl}
+          target="_blank"
+          rel="noreferrer"
+          data-analytics-event="cta_open_preview"
+        >
+          Preview environment
+        </a>
       </div>
     </div>
+
+    <div class="footer-legal">
+      <p>
+        © {year} {site.name}. Property operations workflow for teams that need shared visibility.
+      </p>
+    </div>
+  </div>
+  <div class="circle-blur" aria-hidden="true">
+    <img src="/assets/patterns/blur1.png" alt="" width="400" height="400" loading="lazy" decoding="async" />
   </div>
 </footer>
