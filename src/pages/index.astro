@@ -1,13 +1,14 @@
 ---
+import FieldOfficeBridge from '../components/FieldOfficeBridge.astro';
+import HomeHero from '../components/HomeHero.astro';
 import Icon from '../components/Icon.astro';
 import ProductShowcase from '../components/ProductShowcase.astro';
+import WhatChanges from '../components/WhatChanges.astro';
 import Layout from '../layouts/Layout.astro';
 import {
   audienceCards,
   coordinationTags,
   definitionCards,
-  featureGroups,
-  heroHighlights,
   rolloutStates,
   workflowSteps,
 } from '../data/site';
@@ -17,40 +18,14 @@ import {
   title="Con Gusto | The shared workflow for property operations"
   description="Con Gusto is a property operations platform that keeps maintenance requests, assignments, field updates, and closeout records connected for property managers, contractors, and in-house teams."
 >
-  <section class="hero hero-home">
-    <div class="container hero-grid hero-grid-home">
-      <div class="hero-copy">
-        <div class="eyebrow">Property operations platform</div>
-        <h1>Con Gusto keeps property work visible from request to closeout.</h1>
-        <p class="hero-lead">
-          It gives property managers, contractors, and in-house teams one shared
-          workflow for intake, assignments, field updates, and final completion records
-          so the office and the field stay on the same page.
-        </p>
-        <div class="hero-actions">
-          <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">
-            <span>Request a walkthrough</span>
-            <Icon name="arrow-right" />
-          </a>
-          <a class="button button-secondary" href="/features" data-analytics-event="cta_view_features">See what it does</a>
-        </div>
-        <ul class="hero-points">
-          {heroHighlights.map((item) => (
-            <li>
-              <span class="icon-badge icon-badge-soft">
-                <Icon name="check-circle" />
-              </span>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+  <div class="page-home">
+    <HomeHero />
 
-      <ProductShowcase />
-    </div>
-  </section>
+    <ProductShowcase />
 
-  <section class="section section-tight">
+    <FieldOfficeBridge />
+
+  <section class="section section-tight section-home-after-bridge">
     <div class="container">
       <div class="logo-strip section-panel">
         <div>
@@ -154,38 +129,7 @@ import {
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-heading">
-        <div class="eyebrow">What changes</div>
-        <h2>Designed to reduce operational guesswork, not add another place to check.</h2>
-        <p>
-          Every screen should make the next action easier. That means shared timelines,
-          clearer assignments, and field-ready updates that stay attached to the work.
-        </p>
-      </div>
-
-      {featureGroups.map((group) => (
-        <section class="feature-group section-panel">
-          <div class="feature-group-header">
-            <h3>{group.heading}</h3>
-            <p>{group.summary}</p>
-          </div>
-          <div class="feature-grid">
-            {group.items.map((item) => (
-              <article class="feature-card">
-                <div class="icon-badge icon-badge-soft">
-                  <Icon name={item.icon} />
-                </div>
-                <strong>{item.title}</strong>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
-    </div>
-  </section>
+  <WhatChanges />
 
   <section class="section">
     <div class="container">
@@ -226,4 +170,5 @@ import {
       </div>
     </div>
   </section>
+  </div>
 </Layout>

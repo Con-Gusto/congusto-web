@@ -1,0 +1,83 @@
+---
+import { whatChangesPanels, whatChangesSection } from '../data/site';
+
+const defaultActive = 1;
+---
+
+<section class="section section-alt section-what-changes" aria-labelledby="what-changes-heading">
+  <div class="container">
+    <header class="section-heading section-heading-wide">
+      <div class="eyebrow">{whatChangesSection.eyebrow}</div>
+      <h2 id="what-changes-heading">{whatChangesSection.title}</h2>
+      <p>{whatChangesSection.lead}</p>
+    </header>
+
+    <div
+      class="changes-strip"
+      data-changes-strip
+      role="list"
+      aria-label="Product capabilities"
+    >
+      {whatChangesPanels.map((panel, index) => (
+        <article
+          class:list={['changes-strip-item', { 'is-active': index === defaultActive }]}
+          role="listitem"
+          tabindex="0"
+          data-changes-item
+        >
+          <div class="changes-strip-bg" aria-hidden="true">
+            <img
+              src={panel.image}
+              alt=""
+              width={960}
+              height={640}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="changes-strip-caption">
+            <span class="changes-strip-tag">{panel.tag}</span>
+            <h3>{panel.title}</h3>
+            <p>{panel.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function initChangesStrips() {
+    document.querySelectorAll('[data-changes-strip]').forEach((strip) => {
+      if (strip.dataset.changesReady === 'true') return;
+      strip.dataset.changesReady = 'true';
+
+      const setActive = (target) => {
+        strip.querySelectorAll('[data-changes-item]').forEach((item) => {
+          const isTarget = item === target;
+          item.classList.toggle('is-active', isTarget);
+          if (!isTarget && item === document.activeElement) {
+            item.blur();
+          }
+        });
+      };
+
+      strip.addEventListener('click', (event) => {
+        const item = event.target.closest('[data-changes-item]');
+        if (item) setActive(item);
+      });
+
+      strip.addEventListener('keydown', (event) => {
+        const item = event.target.closest('[data-changes-item]');
+        if (!item) return;
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setActive(item);
+        }
+      });
+    });
+  }
+
+  initChangesStrips();
+  document.addEventListener('astro:page-load', initChangesStrips);
+</script>

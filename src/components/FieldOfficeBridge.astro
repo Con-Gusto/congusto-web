@@ -1,0 +1,93 @@
+---
+import {
+  bridgeFieldBackdrop,
+  bridgeOfficeBackdrop,
+  liveTrackerSteps,
+} from '../data/site';
+
+const activeIndex = 4; /* 0-based: steps before this are “complete” in the demo */
+---
+
+<section class="bridge-section section" aria-labelledby="bridge-heading">
+  <div class="container">
+    <header class="bridge-heading">
+      <div class="eyebrow">Field ↔ office</div>
+      <h2 id="bridge-heading">One automated thread ties the job site to the desk.</h2>
+      <p class="bridge-lead">
+        Same timeline for crews on site and teams at the desk—no guessing what happened in between.
+      </p>
+    </header>
+
+    <div class="bridge-shell section-panel">
+      <div class="bridge-grid">
+        <div class="bridge-column bridge-column--field">
+          <div
+            class="bridge-column-bg"
+            style={`--bridge-col-bg: url('${bridgeFieldBackdrop}')`}
+            aria-hidden="true"
+          />
+          <div class="bridge-column-scrim" aria-hidden="true" />
+          <div class="bridge-column-head">
+            <span class="bridge-pill bridge-pill--field" aria-hidden="true">
+              <span class="ms" aria-hidden="true">hard_hat</span>
+            </span>
+            <h3>Field teams</h3>
+            <p>Technicians, porters, and vendors updating work where it happens.</p>
+          </div>
+        </div>
+
+        <div class="bridge-tracker" aria-label="Example job progress">
+          <p class="bridge-tracker-label">
+            <span class="ms bridge-tracker-icon" aria-hidden="true">route</span>
+            Live progress (example)
+          </p>
+          <ol class="tracker-list">
+            {liveTrackerSteps.map((step, index) => (
+              <li
+                class:list={[
+                  'tracker-step',
+                  `tracker-step--${step.lane}`,
+                  { 'tracker-step--done': index < activeIndex, 'tracker-step--current': index === activeIndex },
+                ]}
+              >
+                <span class="tracker-dot" aria-hidden="true">
+                  {index < activeIndex ? (
+                    <span class="ms tracker-check" aria-hidden="true">check</span>
+                  ) : index === activeIndex ? (
+                    <span class="ms tracker-active" aria-hidden="true">radio_button_checked</span>
+                  ) : (
+                    <span class="ms tracker-pending" aria-hidden="true">radio_button_unchecked</span>
+                  )}
+                </span>
+                <div class="tracker-body">
+                  <strong>{step.title}</strong>
+                  <p>{step.detail}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p class="bridge-tracker-foot">
+            <span class="ms" aria-hidden="true">bolt</span>
+            Updates flow both ways without duplicating messages or screenshots.
+          </p>
+        </div>
+
+        <div class="bridge-column bridge-column--office">
+          <div
+            class="bridge-column-bg"
+            style={`--bridge-col-bg: url('${bridgeOfficeBackdrop}')`}
+            aria-hidden="true"
+          />
+          <div class="bridge-column-scrim" aria-hidden="true" />
+          <div class="bridge-column-head">
+            <span class="bridge-pill bridge-pill--office" aria-hidden="true">
+              <span class="ms" aria-hidden="true">apartment</span>
+            </span>
+            <h3>Office teams</h3>
+            <p>Managers and coordinators seeing the same timeline from intake to closeout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

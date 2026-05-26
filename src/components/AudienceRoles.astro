@@ -1,0 +1,43 @@
+---
+import Icon from './Icon.astro';
+import { audienceCards } from '../data/site';
+---
+
+<section class="section audience-roles-section" aria-label="Roles Con Gusto serves">
+  <div class="container">
+    <div class="audience-roles-grid">
+      {audienceCards.map((card) => (
+        <article class="audience-role section-panel">
+          <div class="audience-role-media">
+            <img
+              src={card.image}
+              alt={`${card.title} role in property operations`}
+              width={640}
+              height={800}
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="audience-role-info">
+              <strong>{card.title}</strong>
+              <span>{card.summary}</span>
+            </div>
+            <span class="icon-badge icon-badge-soft audience-role-icon" aria-hidden="true">
+              <Icon name={card.icon} />
+            </span>
+          </div>
+          <div class="audience-role-body">
+            <p>{card.description}</p>
+            <ul class="bullet-list">
+              {card.bullets.map((bullet) => (
+                <li>
+                  <Icon name="check-circle" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

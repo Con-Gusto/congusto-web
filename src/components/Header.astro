@@ -8,39 +8,169 @@ interface Props {
 }
 
 const { pathname } = Astro.props;
+const isHome = pathname === '/';
 
 const isActive = (href: string) =>
   href === '/'
     ? pathname === '/'
     : pathname === href || pathname.startsWith(`${href}/`);
+
+const navId = 'site-primary-nav';
 ---
 
-<header class="site-header">
-  <div class="container site-header-inner">
-    <a class="brand" href="/">
-      <BrandMark />
-    </a>
-
-    <nav class="nav-links" aria-label="Primary">
-      {navigation.map((item) => (
-        <a
-          href={item.href}
-          aria-current={isActive(item.href) ? 'page' : undefined}
-          class:list={{ active: isActive(item.href) }}
-        >
-          {item.label}
-        </a>
-      ))}
-    </nav>
-
-    <div class="header-actions">
-      <a class="button button-secondary" href="/coming-soon" data-analytics-event="cta_view_rollout">
-        <span>Rollout</span>
+<header
+  class:list={['site-header', 'site-header--webfolio', { 'site-header--overlay': isHome }]}
+  data-site-header
+  data-header-overlay={isHome ? 'true' : 'false'}
+>
+  <nav class="site-header-bar" aria-label="Primary">
+    <div class="container site-header-inner">
+      <a class="brand" href="/">
+        <BrandMark showTagline />
       </a>
-      <a class="button" href="/support" data-analytics-event="cta_request_walkthrough">
-        <span>Request walkthrough</span>
-        <Icon name="arrow-right" />
-      </a>
+
+      <button
+        type="button"
+        class="nav-menu-toggle"
+        aria-expanded="false"
+        aria-controls={navId}
+        data-nav-toggle
+      >
+        <span class="ms nav-menu-toggle__icon nav-menu-toggle__icon--menu" aria-hidden="true">menu</span>
+        <span class="ms nav-menu-toggle__icon nav-menu-toggle__icon--close" aria-hidden="true">close</span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <div class="nav-drawer" id={navId} data-nav-drawer>
+        <div class="nav-drawer__head">
+          <span class="nav-drawer__title">Menu</span>
+          <button type="button" class="nav-drawer__close" aria-label="Close menu" data-nav-close>
+            <span class="ms" aria-hidden="true">close</span>
+          </button>
+        </div>
+        <div class="nav-links">
+          {navigation.map((item) => (
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={{ active: isActive(item.href) }}
+              data-nav-link
+            >
+              <span class="nav-link-label">{item.label}</span>
+            </a>
+          ))}
+        </div>
+        <div class="header-actions">
+          <a class="button button-secondary" href="/coming-soon" data-analytics-event="cta_view_rollout">
+            <span>Rollout</span>
+          </a>
+          <a class="button header-cta" href="/support" data-analytics-event="cta_request_walkthrough">
+            <span class="nav-link-label">Request walkthrough</span>
+            <Icon name="arrow-right" />
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+  </nav>
+  <div class="nav-backdrop" data-nav-backdrop hidden aria-hidden="true"></div>
 </header>
+
+<script is:inline>
+  (function () {
+    var header = document.querySelector('[data-site-header]');
+    if (!header) return;
+
+    var toggle = header.querySelector('[data-nav-toggle]');
+    var drawer = header.querySelector('[data-nav-drawer]');
+    var backdrop = header.querySelector('[data-nav-backdrop]');
+    var closeBtn = header.querySelector('[data-nav-close]');
+    var links = header.querySelectorAll('[data-nav-link]');
+    var overlay = header.getAttribute('data-header-overlay') === 'true';
+
+    function isMobile() {
+      return window.matchMedia('(max-width: 880px)').matches;
+    }
+
+    function syncInert() {
+      if (!drawer) return;
+      if (!isMobile()) {
+        drawer.removeAttribute('inert');
+        return;
+      }
+      if (drawer.classList.contains('nav-drawer--open')) {
+        drawer.removeAttribute('inert');
+      } else {
+        drawer.setAttribute('inert', '');
+      }
+    }
+
+    function setOpen(open) {
+      if (!toggle || !drawer || !backdrop) return;
+
+      if (!isMobile()) {
+        toggle.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('nav-drawer--open');
+        backdrop.hidden = true;
+        backdrop.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('nav-is-open');
+        drawer.removeAttribute('inert');
+        return;
+      }
+
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      drawer.classList.toggle('nav-drawer--open', open);
+      backdrop.hidden = !open;
+      backdrop.setAttribute('aria-hidden', open ? 'false' : 'true');
+      document.documentElement.classList.toggle('nav-is-open', open);
+
+      if (open) {
+        drawer.removeAttribute('inert');
+        var first = drawer.querySelector('a[href]');
+        if (first) first.focus();
+      } else {
+        drawer.setAttribute('inert', '');
+        toggle.focus();
+      }
+    }
+
+    function close() {
+      setOpen(false);
+    }
+
+    function handleScroll() {
+      if (!overlay) return;
+      if (window.scrollY > 300) header.classList.add('nav-scroll');
+      else header.classList.remove('nav-scroll');
+    }
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        if (!isMobile()) return;
+        var open = toggle.getAttribute('aria-expanded') === 'true';
+        setOpen(!open);
+      });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (backdrop) backdrop.addEventListener('click', close);
+
+    links.forEach(function (a) {
+      a.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.documentElement.classList.contains('nav-is-open')) {
+        close();
+      }
+    });
+
+    window.matchMedia('(max-width: 880px)').addEventListener('change', function () {
+      setOpen(false);
+      syncInert();
+    });
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    syncInert();
+  })();
+</script>
