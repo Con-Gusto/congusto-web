@@ -33,8 +33,8 @@ test('core static routes are generated', () => {
 test('homepage contains the current value proposition and shared logo asset', () => {
   const html = readDistFile('index.html');
 
-  assert.match(html, /Con Gusto keeps property work visible from request to closeout\./);
-  assert.match(html, /Property operations platform/);
+  assert.match(html, /One workflow from request to closeout\./);
+  assert.match(html, /property operations platform/i);
   assert.match(html, /\/con-gusto-mark\.svg/);
   assert.match(html, /What It Does/);
   assert.match(html, /data-analytics-event="cta_request_walkthrough"/);
