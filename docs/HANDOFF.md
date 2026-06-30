@@ -27,6 +27,7 @@ The codebase is intentionally small. It is meant to clearly market what Con Gust
 - Do not overstate backend or dashboard availability
 - The public site can market the product clearly, but it must still distinguish between public marketing, preview, and future rollout
 - Preview routes should remain clearly labeled as non-public or guided access
+- Latest re-entry snapshot: `docs/REENTRY_STATUS_2026-06-30.md`
 
 ## Deployment Model
 
@@ -65,7 +66,7 @@ The codebase is intentionally small. It is meant to clearly market what Con Gust
 
 ## Priority Checks
 
-- **Staging deploy (needs verification):** `deploy-staging.yml` may have a copy-paste error — it may use `environment=production` and the `--prod` flag, which would deploy to the production Vercel project instead of staging. Verify this workflow targets `VERCEL_PROJECT_ID_STAGING` before relying on staging deploys.
+- **Staging deploy (verify before relying on it):** `deploy-staging.yml` targets `VERCEL_PROJECT_ID_STAGING`, but it uses `vercel pull --environment=production` and `vercel deploy --prod --yes` inside that staging project. Confirm project IDs and aliases in Vercel before treating a staging deploy as safe.
 - Confirm `BrandMark.astro` and `ProductShowcase.astro` render correctly across breakpoints
 - Verify all 8 page routes resolve after any deploy
 - Check that `src/data/site.ts` copy is accurate with current rollout state
@@ -73,11 +74,12 @@ The codebase is intentionally small. It is meant to clearly market what Con Gust
 ## Recommended Contributor Workflow
 
 1. Read `README.md`
-2. Read `HANDOFF.md`
-3. Review `src/data/site.ts` to understand the site copy model
-4. Read `docs/ARCHITECTURE.md` for component and routing overview
-5. Run `npm install`, `npm run check`, and `npm run build`
-6. Make sure any copy changes remain aligned with actual rollout state
+2. Read `docs/REENTRY_STATUS_2026-06-30.md`
+3. Read `docs/HANDOFF.md`
+4. Review `src/data/site.ts` to understand the site copy model
+5. Read `docs/ARCHITECTURE.md` for component and routing overview
+6. Run `npm install`, `npm run check`, and `npm test`
+7. Make sure any copy changes remain aligned with actual rollout state
 
 ## Useful Next Improvements
 

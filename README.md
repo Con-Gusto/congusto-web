@@ -20,6 +20,7 @@ This repo should stay tightly scoped to the public marketing surface. It is not 
 - Deployments run through GitHub Actions and Vercel
 - The broader product rollout is still in progress, so public copy must stay accurate and conservative
 - The current site has an updated brand pass, responsive landing page, shared logo usage, and refreshed social metadata
+- Latest re-entry snapshot: [`docs/REENTRY_STATUS_2026-06-30.md`](./docs/REENTRY_STATUS_2026-06-30.md)
 
 ## Stack
 
@@ -71,7 +72,7 @@ npm run build
 
 ## Documentation
 
-- [HANDOFF.md](./HANDOFF.md): quick contributor entry point
-- [CONTRIBUTING.md](./CONTRIBUTING.md): contributor workflow and review checklist
+- [docs/REENTRY_STATUS_2026-06-30.md](./docs/REENTRY_STATUS_2026-06-30.md): latest safe-sync status, verification, and next contribution path
 - [.github/DEPLOYMENT.md](./.github/DEPLOYMENT.md): deployment behavior and validation steps
 - [docs/HANDOFF.md](./docs/HANDOFF.md): fuller project state and next-step notes
+- No root `CONTRIBUTING.md` exists today; use this README plus `docs/HANDOFF.md` for contributor workflow.
